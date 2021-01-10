@@ -19,6 +19,7 @@ public:
 	{
 		return Component::ComponentCount;
 	}
+	int getComponentId();
 	Component(const GraphicsInfo &r_GfxInfo);
 	Component(int id, const GraphicsInfo &r_GfxInfo);
 	virtual void Operate() = 0;					 //Calculates the output according to the inputs

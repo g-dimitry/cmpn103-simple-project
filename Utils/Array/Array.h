@@ -59,6 +59,22 @@ public:
       this->count++;
       return this;
    }
+   Array<Type>* pop()
+   {
+       if (count <= 0) {
+           return;
+       }
+       int newCount = count - 1;
+       Type* outArr = new Type[newCount];
+       for (int i = 0; i < newCount; i++) 
+       {
+           outArr[i] = this->data[i];
+       }
+       delete[] this->data;
+       this->count = newCount;
+       this->data = outArr;
+       return this;
+   }
    void filter(function<bool(Type)> f)
    {
       Array<Type> *out = new Array<Type>();

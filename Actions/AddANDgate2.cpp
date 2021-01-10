@@ -41,13 +41,16 @@ void AddANDgate2::Execute()
 	GInfo.y1 = Cy - Wdth / 2;
 	GInfo.y2 = Cy + Wdth / 2;
 	AND2 *pA = new AND2(GInfo, AND2_FANOUT);
+	this->gate = pA;
 	pManager->AddComponent(pA);
 }
 
 void AddANDgate2::Undo()
 {
+	this->pManager->RemoveComponent(this->gate->getComponentId());
 }
 
 void AddANDgate2::Redo()
 {
+	this->pManager->AddComponent(this->gate);
 }

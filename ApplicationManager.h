@@ -6,6 +6,7 @@
 #include "GUI\Input.h"
 #include "Actions\Action.h"
 #include "Components\Component.h"
+#include "./Utils/Array/Array.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -18,9 +19,9 @@ class ApplicationManager
 	}; //Max no of Components
 
 private:
-	int CompCount;										 //Actual number of Components
-	Component *CompList[MaxCompCount]; //List of all Components (Array of pointers)
-	Action *ActionStack[MaxActions];
+	Array<Component*> CompList; //List of all Components (Array of pointers)
+	Array<Action*> ActionStack;
+	int currentStackPosition;
 
 	Output *OutputInterface; //pointer to the Output Clase Interface
 	Input *InputInterface;	 //pointer to the Input Clase Interface
@@ -43,6 +44,11 @@ public:
 
 	//Adds a new component to the list of components
 	void AddComponent(Component *pComp);
+	void RemoveComponent(int ID);
+	void RemoveComponents(Array<int> arr);
+
+	bool ApplicationManager::GetComponentByID(int ID, Component* out);
+
 
 	//destructor
 	~ApplicationManager();

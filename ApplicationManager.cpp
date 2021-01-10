@@ -3,11 +3,6 @@
 
 ApplicationManager::ApplicationManager()
 {
-	CompCount = 0;
-
-	for (int i = 0; i < MaxCompCount; i++)
-		CompList[i] = NULL;
-
 	//Creates the Input / Output Objects & Initialize the GUI
 	OutputInterface = new Output();
 	InputInterface = OutputInterface->CreateInput();
@@ -15,7 +10,43 @@ ApplicationManager::ApplicationManager()
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::AddComponent(Component *pComp)
 {
-	CompList[CompCount++] = pComp;
+	CompList.push(pComp);
+}
+////////////////////////////////////////////////////////////////////
+bool ApplicationManager::GetComponentByID(int ID, Component* out)
+{
+	Array<Component*> clone = CompList.clone();
+	clone.filter([=](Component* comp) {
+		if (comp->getComponentId() == ID) {
+			return true;
+		}
+		return false;
+		});
+	if (clone.getCount() != 0) {
+		out = clone.getData()[0];
+		return true;
+	}
+	return false;
+}
+////////////////////////////////////////////////////////////////////
+void ApplicationManager::RemoveComponent(int ID)
+{
+	Component* comp;
+	if (this->GetComponentByID(ID, comp)) {
+		CompList.filter([=](Component* comp) {
+			if (comp->getComponentId() == ID) {
+				return false;
+			}
+			return true;
+			});
+	}
+}
+////////////////////////////////////////////////////////////////////
+void ApplicationManager::RemoveComponents(Array<int> arr)
+{
+	arr.forEach([=](int ID) {
+		this->RemoveComponent(ID);
+		});
 }
 ////////////////////////////////////////////////////////////////////
 
@@ -54,8 +85,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
-	for (int i = 0; i < CompCount; i++)
-		CompList[i]->Draw(OutputInterface);
+	CompList.forEach([=](Component* comp) {
+		comp->Draw(OutputInterface);
+		});
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -74,8 +106,6 @@ Output *ApplicationManager::GetOutput()
 
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < CompCount; i++)
-		delete CompList[i];
 	delete OutputInterface;
 	delete InputInterface;
 }

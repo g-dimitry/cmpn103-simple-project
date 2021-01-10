@@ -9,6 +9,10 @@ Component::Component(const GraphicsInfo &r_GfxInfo)
 	Component::ComponentCount++;
 }
 
+int Component::getComponentId() {
+	return this->id;
+}
+
 Component::Component(int id, const GraphicsInfo &r_GfxInfo)
 {
 	m_GfxInfo = r_GfxInfo;
