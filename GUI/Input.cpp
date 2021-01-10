@@ -11,6 +11,10 @@ void Input::GetPointClicked(int &x, int &y)
 	pWind->WaitMouseClick(x, y); //Wait for mouse click
 }
 
+buttonstate Input::GetMousePosition(int& x, int& y) {
+	return pWind->GetButtonState(LEFT_BUTTON, x, y);
+}
+
 string Input::GetSrting(Output *pOut)
 {
 	///TODO: Implement this Function

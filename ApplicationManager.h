@@ -47,8 +47,8 @@ public:
 	void RemoveComponent(int ID);
 	void RemoveComponents(Array<int> arr);
 
-	bool ApplicationManager::GetComponentByID(int ID, Component* out);
-
+	bool GetComponentByID(int ID, Component* out);
+	bool ComponentCollides(Component* comp);
 
 	//destructor
 	~ApplicationManager();

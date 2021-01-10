@@ -49,6 +49,18 @@ void ApplicationManager::RemoveComponents(Array<int> arr)
 		});
 }
 ////////////////////////////////////////////////////////////////////
+bool ApplicationManager::ComponentCollides(Component* comp)
+{
+	Array<Component*> arr = this->CompList.clone();
+	arr.filter([=](Component* comp2) {
+		return comp->Collides(comp2);
+		});
+	if (arr.getCount() > 0) {
+	return true;
+	}
+	return false;
+}
+////////////////////////////////////////////////////////////////////
 
 ActionType ApplicationManager::GetUserAction()
 {

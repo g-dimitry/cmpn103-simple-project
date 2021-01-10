@@ -45,6 +45,9 @@ void Output::ChangeTitle(string Title) const
 //////////////////////////////////////////////////////////////////////////////////
 void Output::CreateStatusBar() const
 {
+	pWind->SetPen(UI.BkGrndColor);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, UI.height - UI.StatusBarHeight, UI.width, UI.height - UI.StatusBarHeight);
 }
@@ -96,6 +99,8 @@ void Output::CreateDesignToolBar() const
 	MenuItemImages[ITM_EXIT] = "images\\Menu\\Menu_Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < ITM_DSN_CNT; i++)
@@ -109,7 +114,7 @@ void Output::CreateDesignToolBar() const
 //Draws the menu (toolbar) in the simulation mode
 void Output::CreateSimulationToolBar() const
 {
-	UI.AppMode = SIMULATION; //Simulation Mode
+	//UI.AppMode = SIMULATION; //Simulation Mode
 
 	//TODO: Write code to draw the simualtion toolbar (similar to that of design toolbar drawing)
 }
@@ -142,4 +147,16 @@ void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
 Output::~Output()
 {
 	delete pWind;
+}
+
+void Output::StartBuffer(){
+	pWind->SetBuffering(true);
+}
+void Output::EndBuffer(){
+	pWind->UpdateBuffer();
+	pWind->SetBuffering(false);
+}
+void Output::DrawErrorRectangle(GraphicsInfo g) {
+	pWind->SetBrush(RED);
+	pWind->DrawRectangle(g.x1, g.y1, g.x2, g.y2);
 }

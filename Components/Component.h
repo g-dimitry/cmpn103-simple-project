@@ -35,6 +35,8 @@ public:
 
 	//Destructor must be virtual
 	virtual ~Component();
+
+	bool Collides(Component* comp);
 };
 
 #endif

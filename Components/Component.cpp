@@ -39,3 +39,17 @@ Component::Component()
 Component::~Component()
 {
 }
+
+bool isPointInsideRect(int x, int y, GraphicsInfo g) {
+	if (x >= g.x1 && x <= g.x2 && y >= g.y1 && y <= g.y2) {
+		return true;
+	}
+	return false;
+}
+
+bool Component::Collides(Component* comp) {
+	return isPointInsideRect(this->m_GfxInfo.x1, this->m_GfxInfo.y1, comp->m_GfxInfo)
+		|| isPointInsideRect(this->m_GfxInfo.x1, this->m_GfxInfo.y2, comp->m_GfxInfo)
+		|| isPointInsideRect(this->m_GfxInfo.x2, this->m_GfxInfo.y1, comp->m_GfxInfo)
+		|| isPointInsideRect(this->m_GfxInfo.x2, this->m_GfxInfo.y2, comp->m_GfxInfo);
+}

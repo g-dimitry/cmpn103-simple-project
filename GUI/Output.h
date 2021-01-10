@@ -29,6 +29,10 @@ public:
 	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
 
 	void PrintMsg(string msg) const; //Print a message on Status bar
+	void DrawErrorRectangle(GraphicsInfo g);
+
+	void StartBuffer();
+	void EndBuffer();
 
 	~Output();
 };

@@ -15,11 +15,43 @@ void AddANDgate2::ReadActionParameters()
 	Output *pOut = pManager->GetOutput();
 	Input *pIn = pManager->GetInput();
 
-	//Print Action Message
-	pOut->PrintMsg("2-Input AND Gate: Click to add the gate");
+	bool shouldEndDrag = false;
+	do {
+		buttonstate state = pIn->GetMousePosition(Cx, Cy);
+		pOut->StartBuffer();
 
-	//Wait for User Input
-	pIn->GetPointClicked(Cx, Cy);
+		this->pManager->UpdateInterface();
+
+		int Len = UI.AND2_Width;
+		int Wdth = UI.AND2_Height;
+		GraphicsInfo GInfo;
+		GInfo.x1 = Cx - Len / 2;
+		GInfo.x2 = Cx + Len / 2;
+		GInfo.y1 = Cy - Wdth / 2;
+		GInfo.y2 = Cy + Wdth / 2;
+
+		Component* tmp = new AND2(GInfo, 5);
+		bool ComponentCollides = this->pManager->ComponentCollides(tmp);
+		if (ComponentCollides) {
+		pOut->DrawErrorRectangle(GInfo);
+		}
+		else {
+		pOut->DrawAND2(GInfo);
+		}
+
+		pOut->CreateDesignToolBar();
+		pOut->CreateSimulationToolBar();
+		pOut->CreateStatusBar();
+		pOut->PrintMsg("2-Input AND Gate: Click to add the gate");
+
+		pOut->EndBuffer();
+
+		if (state == BUTTON_DOWN) {
+			if (!ComponentCollides) {
+				shouldEndDrag = true;
+			}
+		}
+	} while (!shouldEndDrag);
 
 	//Clear Status Bar
 	pOut->ClearStatusBar();
