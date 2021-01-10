@@ -15,7 +15,7 @@ private:
 protected:
 	GraphicsInfo m_GfxInfo; //The parameters required to draw a component
 public:
-	static getComponentCount()
+	static int getComponentCount()
 	{
 		return Component::ComponentCount;
 	}

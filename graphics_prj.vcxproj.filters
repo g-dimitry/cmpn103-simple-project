@@ -140,6 +140,9 @@
     <ClCompile Include="CMUgraphicsLib\windowinput.cpp">
       <Filter>CMUgraphics Library</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\LodePNG\LodePNG.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -242,6 +245,12 @@
     <ClInclude Include="CMUgraphicsLib\windowinput.h">
       <Filter>CMUgraphics Library</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\Array\Array.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\LodePNG\LodePNG.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -264,6 +273,9 @@
     </Filter>
     <Filter Include="CMUgraphics Library">
       <UniqueIdentifier>{d63335de-3852-47e7-9b12-ce7902be525e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{a24a0f71-4798-43bd-ad9f-5a4c476b9850}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
