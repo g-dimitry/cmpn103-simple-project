@@ -13,12 +13,14 @@ class ApplicationManager
 
 	enum
 	{
-		MaxCompCount = 200
+		MaxCompCount = 200,
+		MaxActions = 200,
 	}; //Max no of Components
 
 private:
 	int CompCount;										 //Actual number of Components
 	Component *CompList[MaxCompCount]; //List of all Components (Array of pointers)
+	Action *ActionStack[MaxActions];
 
 	Output *OutputInterface; //pointer to the Output Clase Interface
 	Input *InputInterface;	 //pointer to the Input Clase Interface
