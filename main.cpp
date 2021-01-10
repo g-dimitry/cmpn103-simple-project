@@ -13,7 +13,7 @@ int main()
 	ApplicationManager AppManager;
 
 	do
-	{		
+	{
 		//Read user action
 		ActType = AppManager.GetUserAction();
 
@@ -22,10 +22,8 @@ int main()
 
 		//Update the drawing window
 		AppManager.UpdateInterface();
-	
 
-	}while(ActType != EXIT);
-		
+	} while (ActType != EXIT);
+
 	return 0;
 }
-

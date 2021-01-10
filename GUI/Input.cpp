@@ -1,14 +1,14 @@
 //#include "Input.h"
 #include "Output.h"
 
-Input::Input(window* pW)
+Input::Input(window *pW)
 {
 	pWind = pW; //point to the passed window
 }
 
 void Input::GetPointClicked(int &x, int &y)
 {
-	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	pWind->WaitMouseClick(x, y); //Wait for mouse click
 }
 
 string Input::GetSrting(Output *pOut)
@@ -24,15 +24,15 @@ string Input::GetSrting(Output *pOut)
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
-{	
-	int x,y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+{
+	int x, y;
+	pWind->WaitMouseClick(x, y); //Get the coordinates of the user click
 
-	if(UI.AppMode == DESIGN )	//application is in design mode
+	if (UI.AppMode == DESIGN) //application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
-		if ( y >= 0 && y < UI.ToolBarHeight)
-		{	
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.ToolItemWidth);
@@ -41,30 +41,32 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_AND2: return ADD_AND_GATE_2;
-			case ITM_OR2: return ADD_OR_GATE_2;
-			case ITM_EXIT: return EXIT;	
-			
-			default: return DSN_TOOL;	//A click on empty place in desgin toolbar
+			case ITM_AND2:
+				return ADD_AND_GATE_2;
+			case ITM_OR2:
+				return ADD_OR_GATE_2;
+			case ITM_EXIT:
+				return EXIT;
+
+			default:
+				return DSN_TOOL; //A click on empty place in desgin toolbar
 			}
 		}
-	
+
 		//[2] User clicks on the drawing area
-		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
-			return SELECT;	//user want to select/unselect a component
+			return SELECT; //user want to select/unselect a component
 		}
-		
+
 		//[3] User clicks on the status bar
 		return STATUS_BAR;
 	}
-	else	//Application is in Simulation mode
+	else //Application is in Simulation mode
 	{
-		return SIM_MODE;	//This should be changed after creating the compelete simulation bar 
+		return SIM_MODE; //This should be changed after creating the compelete simulation bar
 	}
-
 }
-
 
 Input::~Input()
 {

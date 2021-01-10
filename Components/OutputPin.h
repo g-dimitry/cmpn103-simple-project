@@ -8,20 +8,19 @@
 */
 
 #include "Pin.h"
-class Connection;	//Forward class declartion
+class Connection; //Forward class declartion
 
-
-class OutputPin: public Pin	//inherited from class Pin
+class OutputPin : public Pin //inherited from class Pin
 {
 private:
 	//Array of connections (poniters) to be connected to that OutputPin
 	//For simplicity, we consider it a constant length
-	Connection* m_Connections[MAX_CONNS];	
-	int m_FanOut;	//Maximum No. of connections connected to that output pin (depends on the component)
+	Connection *m_Connections[MAX_CONNS];
+	int m_FanOut; //Maximum No. of connections connected to that output pin (depends on the component)
 	int m_Conn;		//Actual No. of connections connected to that output pin
 public:
-	OutputPin(int r_FanOut);	
-	bool ConnectTo(Connection *r_Conn);	//connect to a new connection
+	OutputPin(int r_FanOut);
+	bool ConnectTo(Connection *r_Conn); //connect to a new connection
 };
 
 #endif
