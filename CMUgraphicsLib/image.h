@@ -23,7 +23,8 @@ using namespace std;
 enum imagetype
 {
 	JPEG,	 // Only supported file format
-	SCREEN // Format created when grabbing image data from the screen
+	SCREEN, // Format created when grabbing image data from the screen
+	PNG // Add PNG support
 };
 
 class image

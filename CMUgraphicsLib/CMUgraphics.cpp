@@ -1398,6 +1398,21 @@ void window::DrawImage(const image *imgThis, const int iX, const int iY, const i
 				}
 			}
 		}
+		else if (imgThis->itType == PNG)
+		{
+			HDC hdc = CreateCompatibleDC(NULL);
+			HBITMAP bmp = CreateBitmap(imgThis->usWidth, imgThis->usHeight, 1, 4 * 8, imgThis->ucpImageData);
+			HBITMAP hold = (HBITMAP)SelectObject(hdc, bmp);
+			BLENDFUNCTION bf;
+			bf.BlendOp = AC_SRC_OVER;
+			bf.BlendFlags = 0;
+			bf.SourceConstantAlpha = 255;
+			bf.AlphaFormat = AC_SRC_ALPHA;
+			if (!AlphaBlend(dcActive, iX, iY, imgThis->usWidth, imgThis->usHeight, hdc,0, 0, imgThis->usWidth, imgThis->usHeight, bf))
+			{
+				cout << "Fatal Error: Failed to AlphaBlend in DrawImage!" << endl;
+			}
+		}
 		else
 		{
 

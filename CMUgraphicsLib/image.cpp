@@ -4,9 +4,11 @@ This file was last modified on 05.16.1999
 */
 
 #include <iostream>
+#include <vector>
+#include <string>
 #include "image.h"
 #include "error.h"
-
+#include "../Utils/LodePNG/LodePNG.h"
 extern "C"
 {
 #include "jpegload.h"
@@ -28,6 +30,8 @@ image::image(string strFileName, imagetype itThisType)
 	bmiImage = NULL;
 	ucpImageData = NULL;
 
+	itType = itThisType;
+
 	Open((char *)strFileName.c_str(), itThisType);
 }
 
@@ -36,6 +40,8 @@ image::image(const char *cpFileName, imagetype itThisType)
 
 	bmiImage = NULL;
 	ucpImageData = NULL;
+
+	itType = itThisType;
 
 	if (cpFileName == NULL)
 	{
@@ -136,6 +142,38 @@ void image::Open(const char *cpFileName, imagetype itThisType)
 		}
 
 		free(ucpTmp);
+
+		ucTransRed = 0;
+		ucTransGreen = 0;
+		ucTransBlue = 0;
+	}
+	else if (itThisType == PNG)
+	{
+		vector<unsigned char> image;
+		unsigned width;
+		unsigned height;
+		string fileName(cpFileName);
+		unsigned error = lodepng::decode(image, width, height, fileName);
+		if (error)
+		{
+			throw FILE_NOT_FOUND;
+		}
+		this->usWidth = width;
+		this->usHeight = height;
+		ucpTmp = image.data();
+
+		bmiImage->bmiHeader.biWidth = usWidth;
+		bmiImage->bmiHeader.biHeight = -usHeight;
+
+		ucpImageData = new unsigned char[(usWidth * 4) * usHeight];
+		if (ucpImageData == NULL)
+		{
+			throw OUT_OF_MEMORY;
+		}
+
+		for (int i = 0; i < image.size(); i++) {
+			ucpImageData[i] = ucpTmp[i];
+		}
 
 		ucTransRed = 0;
 		ucTransGreen = 0;

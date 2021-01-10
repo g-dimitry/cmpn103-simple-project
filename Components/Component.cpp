@@ -5,6 +5,7 @@ int Component::ComponentCount = 0;
 Component::Component(const GraphicsInfo &r_GfxInfo)
 {
 	m_GfxInfo = r_GfxInfo;
+	id = Component::ComponentCount;
 	Component::ComponentCount++;
 }
 
@@ -27,6 +28,7 @@ Component::Component(int id)
 
 Component::Component()
 {
+	id = Component::ComponentCount;
 	Component::ComponentCount++;
 }
 

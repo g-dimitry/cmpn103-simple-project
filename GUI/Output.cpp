@@ -1,4 +1,5 @@
 #include "Output.h"
+#include "../CMUgraphicsLib/image.h";
 
 Output::Output()
 {
@@ -121,13 +122,14 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected) //use image in the highlighted case
-		GateImage = "Images\\Gates\\Gate_AND2_Hi.jpg";
+		GateImage = "Images\\components\\faded\\and.png";
 	else
-		GateImage = "Images\\Gates\\Gate_AND2.jpg";
+		GateImage = "Images\\components\\faded\\and.png";
 
 	//Draw AND2 Gate at Gfx_Info (1st corner)
 	//Set the Image Width & Height by AND2 Image Parameter in UI_Info
-	pWind->DrawImage(GateImage, r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	imagetype a = imagetype::PNG;
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
 }
 
 //TODO: Add similar functions to draw all components
