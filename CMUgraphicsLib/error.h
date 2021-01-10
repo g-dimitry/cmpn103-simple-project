@@ -9,9 +9,10 @@ This file was last modified on 05.16.1999
 #include "version.h"
 
 // Types of errors when exceptions are raised
-enum error {
-	OUT_OF_MEMORY,  // Procedure was unable to allocated enough memory
-	FILE_NOT_FOUND  // Procedure could not open the requested file
+enum error
+{
+	OUT_OF_MEMORY, // Procedure was unable to allocated enough memory
+	FILE_NOT_FOUND // Procedure could not open the requested file
 };
 
 #endif

@@ -10,49 +10,55 @@ This file was last modified on 05.16.1999
 #include "version.h"
 
 // Which button -- no middle button for now
-enum button {
-    LEFT_BUTTON,
-    RIGHT_BUTTON
+enum button
+{
+	LEFT_BUTTON,
+	RIGHT_BUTTON
 };
 
 // Is the mouse button up or down?
-enum buttonstate {
-    BUTTON_UP,
-    BUTTON_DOWN
+enum buttonstate
+{
+	BUTTON_UP,
+	BUTTON_DOWN
 };
 
 // Type of click that an be made
-enum clicktype {
+enum clicktype
+{
 	NO_CLICK,
-    LEFT_CLICK,
+	LEFT_CLICK,
 	RIGHT_CLICK,
 };
 
-class mqueuenode {
+class mqueuenode
+{
 
-  public:
+public:
 	clicktype ctInfo;
 	int iX, iY;
 
 	mqueuenode *mqueNext;
 
-	mqueuenode() {
-	    mqueNext = NULL;
+	mqueuenode()
+	{
+		mqueNext = NULL;
 	}
 };
 
-class mqueue {
+class mqueue
+{
 
-  private:
-    mqueuenode *mqueHead;
+private:
+	mqueuenode *mqueHead;
 	mqueuenode *mqueTail;
 
-  public:
+public:
 	mqueue();
 	~mqueue();
-	
-	void Insert(mqueuenode* mqueNode);
-	mqueuenode* Remove();
+
+	void Insert(mqueuenode *mqueNode);
+	mqueuenode *Remove();
 };
 
 #endif //MOUSEQUEUE_H

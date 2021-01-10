@@ -54,18 +54,18 @@ This file was last modified on 05.16.1999
 //#define __BORLANDCPP__
 
 #ifdef __MW_CODEWARRIOR4__
-  #pragma ANSI_strict on 
-  #pragma warn_emptydecl on
-  #pragma warn_extracomma on
-  #pragma warn_hidevirtual on
-  #pragma warn_illpragma on 
-  #pragma warn_implicitconv on
-  #pragma warn_possunwant on
-  #pragma warn_structclass on 
-  #pragma warn_unusedarg on
-  #pragma warn_unusedvar on
-  #pragma require_prototypes on
-  #pragma extended_errorcheck on
+#pragma ANSI_strict on
+#pragma warn_emptydecl on
+#pragma warn_extracomma on
+#pragma warn_hidevirtual on
+#pragma warn_illpragma on
+#pragma warn_implicitconv on
+#pragma warn_possunwant on
+#pragma warn_structclass on
+#pragma warn_unusedarg on
+#pragma warn_unusedvar on
+#pragma require_prototypes on
+#pragma extended_errorcheck on
 #endif
 
 #endif /*VERSION_H */

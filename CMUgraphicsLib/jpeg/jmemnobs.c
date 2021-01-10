@@ -18,13 +18,12 @@
 #define JPEG_INTERNALS
 #include "jinclude.h"
 #include "jpeglib.h"
-#include "jmemsys.h"		/* import the system-dependent declarations */
+#include "jmemsys.h" /* import the system-dependent declarations */
 
-#ifndef HAVE_STDLIB_H		/* <stdlib.h> should declare malloc(),free() */
-extern void * malloc JPP((size_t size));
+#ifndef HAVE_STDLIB_H /* <stdlib.h> should declare malloc(),free() */
+extern void *malloc JPP((size_t size));
 extern void free JPP((void *ptr));
 #endif
-
 
 /*
  * Memory allocation and freeing are controlled by the regular library
@@ -32,25 +31,24 @@ extern void free JPP((void *ptr));
  */
 
 GLOBAL(void *)
-jpeg_get_small (j_common_ptr cinfo, size_t sizeofobject)
+jpeg_get_small(j_common_ptr cinfo, size_t sizeofobject)
 {
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;
 
-  return (void *) malloc(sizeofobject);
+  return (void *)malloc(sizeofobject);
 }
 
 GLOBAL(void)
-jpeg_free_small (j_common_ptr cinfo, void * object, size_t sizeofobject)
+jpeg_free_small(j_common_ptr cinfo, void *object, size_t sizeofobject)
 {
 
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;
   sizeofobject = sizeofobject;
-  
+
   free(object);
 }
-
 
 /*
  * "Large" objects are treated the same as "small" ones.
@@ -60,16 +58,16 @@ jpeg_free_small (j_common_ptr cinfo, void * object, size_t sizeofobject)
  */
 
 GLOBAL(void FAR *)
-jpeg_get_large (j_common_ptr cinfo, size_t sizeofobject)
+jpeg_get_large(j_common_ptr cinfo, size_t sizeofobject)
 {
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;
 
-  return (void FAR *) malloc(sizeofobject);
+  return (void FAR *)malloc(sizeofobject);
 }
 
 GLOBAL(void)
-jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
+jpeg_free_large(j_common_ptr cinfo, void FAR *object, size_t sizeofobject)
 {
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;
@@ -78,25 +76,23 @@ jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
   free(object);
 }
 
-
 /*
  * This routine computes the total memory space available for allocation.
  * Here we always say, "we got all you want bud!"
  */
 
 GLOBAL(long)
-jpeg_mem_available (j_common_ptr cinfo, long min_bytes_needed,
-		    long max_bytes_needed, long already_allocated)
+jpeg_mem_available(j_common_ptr cinfo, long min_bytes_needed,
+                   long max_bytes_needed, long already_allocated)
 {
 
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;
   min_bytes_needed = min_bytes_needed;
   already_allocated = already_allocated;
-  
+
   return max_bytes_needed;
 }
-
 
 /*
  * Backing store (temporary file) management.
@@ -105,8 +101,8 @@ jpeg_mem_available (j_common_ptr cinfo, long min_bytes_needed,
  */
 
 GLOBAL(void)
-jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
-			 long total_bytes_needed)
+jpeg_open_backing_store(j_common_ptr cinfo, backing_store_ptr info,
+                        long total_bytes_needed)
 {
 
   /* Spin wheels to avoid compiler warnings */
@@ -116,23 +112,22 @@ jpeg_open_backing_store (j_common_ptr cinfo, backing_store_ptr info,
   ERREXIT(cinfo, JERR_NO_BACKING_STORE);
 }
 
-
 /*
  * These routines take care of any system-dependent initialization and
  * cleanup required.  Here, there isn't any.
  */
 
 GLOBAL(long)
-jpeg_mem_init (j_common_ptr cinfo)
+jpeg_mem_init(j_common_ptr cinfo)
 {
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;
 
-  return 0;			/* just set max_memory_to_use to 0 */
+  return 0; /* just set max_memory_to_use to 0 */
 }
 
 GLOBAL(void)
-jpeg_mem_term (j_common_ptr cinfo)
+jpeg_mem_term(j_common_ptr cinfo)
 {
   /* Spin wheels to avoid compiler warnings */
   cinfo = cinfo;

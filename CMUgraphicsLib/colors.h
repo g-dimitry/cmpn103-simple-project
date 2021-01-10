@@ -8,21 +8,22 @@ This file was last modified on 05.16.1999
 
 #include "version.h"
 
-class color {
+class color
+{
 
-  public:
+public:
+  // Default constructor creates black
+  color(unsigned char Red = 0, unsigned char Green = 0, unsigned char Blue = 0)
+  {
+    ucRed = Red;
+    ucGreen = Green;
+    ucBlue = Blue;
+  }
 
-    // Default constructor creates black
-    color(unsigned char Red = 0, unsigned char Green = 0, unsigned char Blue = 0) { 
-        ucRed = Red;  ucGreen = Green;  ucBlue = Blue; 
-    }
-
-
-    // Color components.  0 = no intensity, 255 = full intensity
-    unsigned char ucRed;
-    unsigned char ucGreen;
-    unsigned char ucBlue;
-
+  // Color components.  0 = no intensity, 255 = full intensity
+  unsigned char ucRed;
+  unsigned char ucGreen;
+  unsigned char ucBlue;
 };
 
 bool operator==(color a, color b);
@@ -181,6 +182,5 @@ const color DARKCYAN = color(0, 139, 139);
 const color DARKMAGENTA = color(139, 0, 139);
 const color DARKRED = color(139, 0, 0);
 const color LIGHTGREEN = color(144, 238, 144);
-
 
 #endif //COLOR_H

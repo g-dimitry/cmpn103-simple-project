@@ -5,51 +5,62 @@ This file was last modified on 05.16.1999
 
 #include "mousequeue.h"
 
-mqueue::mqueue() {
+mqueue::mqueue()
+{
 
     mqueHead = NULL;
     mqueTail = NULL;
-
 }
 
-mqueue::~mqueue() {
+mqueue::~mqueue()
+{
 
-   mqueuenode *mqueTmp;
+    mqueuenode *mqueTmp;
 
-   mqueTail = NULL;
+    mqueTail = NULL;
 
-   while(mqueHead != NULL) {
-       mqueTmp = mqueHead;
-	   mqueHead = mqueHead->mqueNext;
-	   delete mqueTmp;
-   }
-}
-	
-void mqueue::Insert(mqueuenode* mqueNode) {
-
-    if(mqueNode == NULL) {
-        return;
-	} else if(mqueHead == NULL) {
-        mqueHead = mqueNode;
-		mqueTail = mqueHead;
-	} else {
-        mqueTail->mqueNext = mqueNode;
-	    mqueTail = mqueTail->mqueNext;
-	}
-}
-
-mqueuenode* mqueue::Remove() {
-
-    mqueuenode* mqueTmp;
-
-	if(mqueHead != NULL) {
+    while (mqueHead != NULL)
+    {
         mqueTmp = mqueHead;
-	    mqueHead = mqueHead->mqueNext;
-	    mqueTmp->mqueNext = NULL;
-    } else {
+        mqueHead = mqueHead->mqueNext;
+        delete mqueTmp;
+    }
+}
+
+void mqueue::Insert(mqueuenode *mqueNode)
+{
+
+    if (mqueNode == NULL)
+    {
+        return;
+    }
+    else if (mqueHead == NULL)
+    {
+        mqueHead = mqueNode;
+        mqueTail = mqueHead;
+    }
+    else
+    {
+        mqueTail->mqueNext = mqueNode;
+        mqueTail = mqueTail->mqueNext;
+    }
+}
+
+mqueuenode *mqueue::Remove()
+{
+
+    mqueuenode *mqueTmp;
+
+    if (mqueHead != NULL)
+    {
+        mqueTmp = mqueHead;
+        mqueHead = mqueHead->mqueNext;
+        mqueTmp->mqueNext = NULL;
+    }
+    else
+    {
         mqueTmp = NULL;
-	}
+    }
 
-	return mqueTmp;
-
+    return mqueTmp;
 }

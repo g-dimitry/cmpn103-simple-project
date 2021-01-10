@@ -10,7 +10,8 @@ This file was last modified on 05.16.1999
 #include "version.h"
 
 // Types of keys that can be pressed
-enum keytype {
+enum keytype
+{
 	NO_KEYPRESS,
 	ASCII,
 	ARROW,
@@ -18,32 +19,34 @@ enum keytype {
 	ESCAPE
 };
 
+class kqueuenode
+{
 
-class kqueuenode {
-    
-  public:
+public:
 	keytype ktInfo;
 	char cValue;
 
 	kqueuenode *kqueNext;
-	
-	kqueuenode() {
-	    kqueNext = NULL;
+
+	kqueuenode()
+	{
+		kqueNext = NULL;
 	}
 };
 
-class kqueue {
+class kqueue
+{
 
-  private:
-    kqueuenode *kqueHead;
+private:
+	kqueuenode *kqueHead;
 	kqueuenode *kqueTail;
 
-  public:
+public:
 	kqueue();
 	~kqueue();
-	
-	void Insert(kqueuenode* kqueNode);
-	kqueuenode* Remove();
+
+	void Insert(kqueuenode *kqueNode);
+	kqueuenode *Remove();
 };
 
 #endif //KEYQUEUE_H
