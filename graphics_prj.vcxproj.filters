@@ -251,6 +251,7 @@
     <ClInclude Include="Utils\LodePNG\LodePNG.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Actions\AddGate.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

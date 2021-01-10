@@ -1,8 +1,6 @@
-#ifndef _ACTION_H
-#define _ACTION_H
-
-class ApplicationManager; //forward class declaration
-
+#pragma once
+#include "../ApplicationManager.h"
+class ApplicationManager;
 //Base class for all possible actions (abstract class)
 class Action
 {
@@ -24,4 +22,3 @@ public:
 	virtual void Redo() = 0;
 };
 
-#endif
