@@ -23,6 +23,19 @@ public:
 
 	// Draws 2-input AND gate
 	void DrawAND2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawNot(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawNAND2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawNOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawAND3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawOR3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawXOR3(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawBUFFER(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawLED(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawWIRE(GraphicsInfo r_GfxInfo, bool selected = false) const;
 
 	///TODO: Make similar functions for drawing all other gates, switch, and LED, .. etc
 

@@ -1,12 +1,4 @@
-#ifndef _AND2_H
-#define _AND2_H
-
-/*
-  Class AND2
-  -----------
-  represent the 2-input AND gate
-*/
-
+#pragma once
 #include "Gate.h"
 
 class AND2 : public Gate

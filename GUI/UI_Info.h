@@ -14,11 +14,13 @@ __declspec(selectany) //This line to prevent "redefinition error"
 {
 	MODE AppMode; //Application Mode (design or simulation)
 
-	static const int  GridSize = 16, widthError = 14, heightError=15, width = 80 * GridSize, height = 45 * GridSize, //Window width and height
-			wx = 0, wy = 0,												 //Window starting coordinates
-			StatusBarHeight = 50,										 //Status Bar Height
-			ToolBarHeight = 80,											 //Tool Bar Height (distance from top of window to bottom line of toolbar)
-			ToolItemWidth = 80;											 //Width of each item in toolbar menu
+	static const int  GridSize = 16, widthError = 14, heightError = 15, width = 80 * GridSize, height = 45 * GridSize, //Window width and height
+		wx = 0, wy = 0,												 //Window starting coordinates
+		StatusBarHeight = 48,										 //Status Bar Height
+		ToolBarHeight = 32,											 //Tool Bar Height (distance from top of window to bottom line of toolbar)
+		ToolBarItemWidth = 32,											 //Width of each item in toolbar menu
+		GateBarHeight = 32,
+		GateBarItemWidth = 48;
 
 	color DrawColor;	 //Drawing color
 	color SelectColor; //Highlighting color
@@ -35,8 +37,8 @@ __declspec(selectany) //This line to prevent "redefinition error"
 
 	//This should be calculated accurately because it will be used later to create connections between gates
 	//For now, we will assume that rect width = 50 and height = 50
-	static const int AND2_Width = 96, //AND2 Gate Image default width
-			AND2_Height = 64;							//AND2 Gate Image default height
+	static const int Gate_Width = 96, //AND2 Gate Image default width
+			Gate_Height = 64;							//AND2 Gate Image default height
 
 } UI; //create a single global object UI
 

@@ -15,6 +15,7 @@ enum ActionType
 	ADD_XOR_GATE_2,	 //Add 2-input XOR gate
 	ADD_XNOR_GATE_2, //Add 2-input XNOR gate
 	ADD_AND_GATE_3,	 //Add 3-input AND gate
+	ADD_OR_GATE_3,
 	ADD_NOR_GATE_3,	 //Add 3-input NOR gate
 	ADD_XOR_GATE_3,	 //Add 3-input XOR gate
 	ADD_Switch,			 //Add Switch
@@ -67,10 +68,18 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 	//If you want to change the menu items order, change the order here
 	ITM_AND2, //AND gate item in menu
 	ITM_OR2,	//OR gate item in menu
-
-	ITM_EXIT, //Exit item
-	//TODO: Add more items names here
-
+	ITM_NOT,	//OR gate item in menu
+	ITM_NAND2,	//OR gate item in menu
+	ITM_NOR2,	//OR gate item in menu
+	ITM_XOR2,	//OR gate item in menu
+	ITM_XNOR2,	//OR gate item in menu
+	ITM_AND3,	//OR gate item in menu
+	ITM_OR3,	//OR gate item in menu
+	ITM_XOR3,	//OR gate item in menu
+	ITM_BUFFER,	//OR gate item in menu
+	ITM_SWITCH,	//OR gate item in menu
+	ITM_LED,	//OR gate item in menu
+	ITM_WIRE,	//OR gate item in menu
 	ITM_DSN_CNT //no. of design menu items ==> This should be the last line in this enum
 
 };
@@ -93,7 +102,17 @@ enum SimMenuItem //The items of the simulation menu (you should add more items)
 //assume fan out is 5 for now it can be read from the user or can be predefined as const
 enum FANOUT
 {
-	AND2_FANOUT = 5 //Default fan out of 2-input AND gate
+	AND2_FANOUT = 5, //Default fan out of 2-input AND gate
+	OR2_FANOUT = 5, //Default fan out of 2-input AND gate
+	NOT_FANOUT = 5, //Default fan out of 2-input AND gate
+	NAND2_FANOUT = 5, //Default fan out of 2-input AND gate
+	NOR2_FANOUT = 5, //Default fan out of 2-input AND gate
+	XOR2_FANOUT = 5, //Default fan out of 2-input AND gate
+	XNOR2_FANOUT = 5, //Default fan out of 2-input AND gate
+	AND3_FANOUT = 5, //Default fan out of 2-input AND gate
+	OR3_FANOUT = 5, //Default fan out of 2-input AND gate
+	XOR3_FANOUT = 5, //Default fan out of 2-input AND gate
+	BUFFER_FANOUT = 5, //Default fan out of 2-input AND gate
 };
 
 //A structure to contain drawing parameters for each component

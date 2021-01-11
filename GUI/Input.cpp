@@ -39,7 +39,7 @@ ActionType Input::GetUserAction() const
 		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
-			int ClickedItemOrder = (x / UI.ToolItemWidth);
+			int ClickedItemOrder = (x / UI.ToolBarItemWidth);
 			//Divide x coord of the point clicked by the menu item width (int division)
 			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 
@@ -49,9 +49,30 @@ ActionType Input::GetUserAction() const
 				return ADD_AND_GATE_2;
 			case ITM_OR2:
 				return ADD_OR_GATE_2;
-			case ITM_EXIT:
-				return EXIT;
-
+			case ITM_NOT:
+				return ADD_INV;
+			case ITM_NAND2:
+				return ADD_NAND_GATE_2;
+			case ITM_NOR2:
+				return ADD_NOR_GATE_2;
+			case ITM_XOR2:
+				return ADD_XOR_GATE_2;
+			case ITM_XNOR2:
+				return ADD_XNOR_GATE_2;
+			case ITM_AND3:
+				return ADD_AND_GATE_3;
+			case ITM_OR3:
+				return ADD_OR_GATE_3;
+			case ITM_XOR3:
+				return ADD_XOR_GATE_3;
+			case ITM_BUFFER:
+				return ADD_Buff;
+			case ITM_SWITCH:
+				return ADD_Switch;
+			case ITM_LED:
+				return ADD_LED;
+			case ITM_WIRE:
+				return ADD_CONNECTION;
 			default:
 				return DSN_TOOL; //A click on empty place in desgin toolbar
 			}
