@@ -121,14 +121,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_XOR_GATE_3:
 		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_XOR_GATE_3);
 		break;
+	case ADD_LED:
+		pAct = new AddLED(this, UI.SWITCH_WIDTH, UI.SWITCH_HEIGHT, "Switch");
+		break;
 	}
 	// case ADD_Switch:
 	// 	pAct = new AddANDgate2(this);
 	// 	break;
 
-	// case ADD_LED:
-	// 	pAct = new AddANDgate2(this);
-	// 	break;
 
 	// case ADD_CONNECTION:
 	// 	pAct = new AddANDgate2(this);

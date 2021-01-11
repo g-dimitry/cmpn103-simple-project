@@ -7,6 +7,7 @@ class ApplicationManager;
 #include "./GUI/Output.h"
 #include "./GUI/Input.h"
 #include "./Actions/AddGate.h"
+#include "./Actions/AddLED.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager

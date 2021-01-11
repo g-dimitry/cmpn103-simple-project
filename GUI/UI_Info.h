@@ -38,8 +38,11 @@ __declspec(selectany) //This line to prevent "redefinition error"
 	//This should be calculated accurately because it will be used later to create connections between gates
 	//For now, we will assume that rect width = 50 and height = 50
 	static const int Gate_Width = 96, //AND2 Gate Image default width
-			Gate_Height = 64;							//AND2 Gate Image default height
-
+			Gate_Height = 64,							//AND2 Gate Image default height
+			LED_HEIGHT = 64,
+			SWITCH_HEIGHT = 64,
+			LED_WIDTH = 64,
+			SWITCH_WIDTH = 64;
 } UI; //create a single global object UI
 
 #endif
