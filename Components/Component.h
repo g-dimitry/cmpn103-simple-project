@@ -1,8 +1,8 @@
 #ifndef _COMPONENT_H
 #define _COMPONENT_H
 
-#include "..\Defs.h"
-#include "..\GUI\Output.h"
+#include "../Defs.h"
+#include "../GUI/Output.h"
 
 //Base class for classes Gate, Switch, and LED.
 class Component

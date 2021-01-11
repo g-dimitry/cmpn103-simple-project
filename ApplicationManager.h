@@ -1,11 +1,11 @@
 #pragma once
 class ApplicationManager;
 #include "Defs.h"
-#include "Components\Component.h"
+#include "Components/Component.h"
 #include "./Utils/Array/Array.h"
 #include "./Actions/Action.h"
-#include "GUI\Output.h"
-#include "GUI\Input.h"
+#include "GUI/Output.h"
+#include "GUI/Input.h"
 #include "Actions/AddGate.h"
 
 //Main class that manages everything in the application.

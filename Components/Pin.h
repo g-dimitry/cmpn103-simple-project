@@ -1,7 +1,7 @@
 #ifndef _PIN_H
 #define _PIN_H
 
-#include "..\Defs.h"
+#include "../Defs.h"
 
 class Pin
 {

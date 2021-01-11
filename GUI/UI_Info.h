@@ -1,8 +1,8 @@
 #ifndef UI_INFO_H
 #define UI_INFO_H
 
-#include "..\CMUgraphicsLib\CMUgraphics.h"
-#include "..\Defs.h"
+#include "../CMUgraphicsLib/CMUgraphics.h"
+#include "../Defs.h"
 
 //User Interface information file.
 //This file contains info that is needed by Input and Output classes to
