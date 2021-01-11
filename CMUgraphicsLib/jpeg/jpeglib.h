@@ -21,9 +21,9 @@
  */
 
 #ifndef JCONFIG_INCLUDED /* in case jinclude.h already did */
-#include "jconfig.h"     /* widely used configuration options */
+#include "./jconfig.h"     /* widely used configuration options */
 #endif
-#include "jmorecfg.h" /* seldom changed options */
+#include "./jmorecfg.h" /* seldom changed options */
 
 /* Version ID for the JPEG library.
  * Might be useful for tests like "#if JPEG_LIB_VERSION >= 60".
@@ -1125,8 +1125,8 @@ struct jpeg_color_quantizer
  */
 
 #ifdef JPEG_INTERNALS
-#include "jpegint.h" /* fetch private declarations */
-#include "jerror.h"  /* fetch error codes too */
+#include "./jpegint.h" /* fetch private declarations */
+#include "./jerror.h"  /* fetch error codes too */
 #endif
 
 #endif /* JPEGLIB_H */

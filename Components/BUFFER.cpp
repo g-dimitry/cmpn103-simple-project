@@ -1,4 +1,4 @@
-#include "BUFFER.h"
+#include "./BUFFER.h"
 
 BUFFER::BUFFER(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(1, r_FanOut)
 {

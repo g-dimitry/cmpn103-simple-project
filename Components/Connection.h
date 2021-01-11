@@ -1,7 +1,7 @@
 #pragma once
-#include "component.h"
-#include "InputPin.h"
-#include "OutputPin.h"
+#include "./component.h"
+#include "./InputPin.h"
+#include "./OutputPin.h"
 
 class Connection : public Component
 {

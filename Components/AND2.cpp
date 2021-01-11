@@ -1,4 +1,4 @@
-#include "AND2.h"
+#include "./AND2.h"
 
 AND2::AND2(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 {

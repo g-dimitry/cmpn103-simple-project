@@ -6,12 +6,12 @@ This file was last modified on 05.16.1999
 #include <iostream>
 #include <vector>
 #include <string>
-#include "image.h"
-#include "error.h"
+#include "./image.h"
+#include "./error.h"
 #include "../Utils/LodePNG/LodePNG.h"
 extern "C"
 {
-#include "jpegload.h"
+#include "./jpegload.h"
 }
 
 image::image()

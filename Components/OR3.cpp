@@ -1,4 +1,4 @@
-#include "OR3.h"
+#include "./OR3.h"
 
 OR3::OR3(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(3, r_FanOut)
 {

@@ -1,4 +1,4 @@
-#include "AND3.h"
+#include "./AND3.h"
 
 AND3::AND3(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(3, r_FanOut)
 {

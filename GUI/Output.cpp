@@ -1,4 +1,4 @@
-#include "Output.h"
+#include "./Output.h"
 #include "../CMUgraphicsLib/image.h";
 
 Output::Output()

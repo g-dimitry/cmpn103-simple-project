@@ -1,16 +1,16 @@
-#include "Gate.h"
+#include "./Gate.h"
 
-#include "AND2.h"
-#include "AND3.h"
-#include "BUFFER.h"
-#include "NAND2.h"
-#include "NOR2.h"
-#include "NOT.h"
-#include "OR2.h"
-#include "OR3.h"
-#include "XNOR2.h"
-#include "XOR2.h"
-#include "XOR3.h"
+#include "./AND2.h"
+#include "./AND3.h"
+#include "./BUFFER.h"
+#include "./NAND2.h"
+#include "./NOR2.h"
+#include "./NOT.h"
+#include "./OR2.h"
+#include "./OR3.h"
+#include "./XNOR2.h"
+#include "./XOR2.h"
+#include "./XOR3.h"
 //Gate Constructor
 //Parameters:
 //r_Inputs: no. of gate's input pins

@@ -1,5 +1,5 @@
 #pragma once
-#include "Gate.h"
+#include "./Gate.h"
 
 class XOR2 : public Gate
 {

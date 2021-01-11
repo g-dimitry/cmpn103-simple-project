@@ -1,6 +1,6 @@
 #pragma once
 #include "../Defs.h"
-#include "Input.h"
+#include "./Input.h"
 
 class Output //The application manager should have a pointer to this class
 {

@@ -3,7 +3,7 @@ See "version.h" for version info and copyright information
 This file was last modified on 05.16.1999
 */
 
-#include "keyqueue.h"
+#include "./keyqueue.h"
 
 kqueue::kqueue()
 {

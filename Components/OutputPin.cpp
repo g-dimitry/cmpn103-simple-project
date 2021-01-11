@@ -1,5 +1,5 @@
-#include "OutputPin.h"
-#include "Connection.h"
+#include "./OutputPin.h"
+#include "./Connection.h"
 
 OutputPin::OutputPin(int r_FanOut)
 {

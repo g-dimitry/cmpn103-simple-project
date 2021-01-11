@@ -6,7 +6,7 @@ This file was last modified on 05.16.1999
 #ifndef ERROR_H
 #define ERROR_H
 
-#include "version.h"
+#include "./version.h"
 
 // Types of errors when exceptions are raised
 enum error

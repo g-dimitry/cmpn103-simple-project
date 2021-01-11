@@ -1,4 +1,4 @@
-#include "Component.h"
+#include "./Component.h"
 
 int Component::ComponentCount = 0;
 

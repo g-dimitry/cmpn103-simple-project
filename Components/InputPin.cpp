@@ -1,4 +1,4 @@
-#include "InputPin.h"
+#include "./InputPin.h"
 
 InputPin::InputPin()
 {

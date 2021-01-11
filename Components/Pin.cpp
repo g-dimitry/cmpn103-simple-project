@@ -1,4 +1,4 @@
-#include "Pin.h"
+#include "./Pin.h"
 
 Pin::Pin()
 {

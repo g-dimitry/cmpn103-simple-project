@@ -1,4 +1,4 @@
-#include "OR2.h"
+#include "./OR2.h"
 
 OR2::OR2(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 {

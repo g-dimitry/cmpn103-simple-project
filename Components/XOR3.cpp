@@ -1,4 +1,4 @@
-#include "XOR3.h"
+#include "./XOR3.h"
 
 XOR3::XOR3(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(3, r_FanOut)
 {

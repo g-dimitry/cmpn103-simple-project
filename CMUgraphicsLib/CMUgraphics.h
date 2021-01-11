@@ -13,11 +13,11 @@ This file was last modified on 05.16.1999
 #include <windows.h>
 #endif //WINDOWS_H
 
-#include "mousequeue.h"
-#include "keyqueue.h"
-#include "image.h"
-#include "colors.h"
-#include "version.h"
+#include "./mousequeue.h"
+#include "./keyqueue.h"
+#include "./image.h"
+#include "./colors.h"
+#include "./version.h"
 
 // Aproximate value of Pi, used in some calculations
 const double cdPi = 3.141592653589793238462643383279;

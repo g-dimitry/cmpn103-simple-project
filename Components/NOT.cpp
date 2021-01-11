@@ -1,4 +1,4 @@
-#include "NOT.h"
+#include "./NOT.h"
 
 NOT::NOT(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(1, r_FanOut)
 {

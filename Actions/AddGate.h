@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "action.h"
+#include "./action.h"
 #include "../Components/Gate.h"
 #include "../Defs.H"
 class ApplicationManager;

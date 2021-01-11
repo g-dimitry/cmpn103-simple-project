@@ -6,9 +6,9 @@ This file was last modified on 05.16.1999
 #include <iostream>
 #include <string>
 
-#include "CMUgraphics.h"
-#include "windowinput.h"
-#include "error.h"
+#include "./CMUgraphics.h"
+#include "./windowinput.h"
+#include "./error.h"
 
 windowinput::windowinput(const HWND hwndNew, const window *wpNewWind)
 {

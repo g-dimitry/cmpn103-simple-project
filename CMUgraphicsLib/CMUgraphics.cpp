@@ -8,9 +8,9 @@ This file was last modified on 05.16.1999
 #include <cstdio>
 #include <cmath>
 
-#include "CMUgraphics.h"
-#include "error.h"
-#include "windowinput.h"
+#include "./CMUgraphics.h"
+#include "./error.h"
+#include "./windowinput.h"
 
 // Keeps track of key and mouse input and redirects it to the
 // appropriate window object

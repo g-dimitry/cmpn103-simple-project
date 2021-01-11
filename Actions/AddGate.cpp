@@ -1,4 +1,4 @@
-#include "AddGate.h"
+#include "./AddGate.h"
 #include "../ApplicationManager.h"
 
 

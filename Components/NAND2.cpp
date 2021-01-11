@@ -1,4 +1,4 @@
-#include "NAND2.h"
+#include "./NAND2.h"
 
 NAND2::NAND2(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 {

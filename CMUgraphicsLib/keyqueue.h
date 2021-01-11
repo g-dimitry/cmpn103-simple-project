@@ -7,7 +7,7 @@ This file was last modified on 05.16.1999
 #define KEYQUEUE_H
 
 #include <cstdlib>
-#include "version.h"
+#include "./version.h"
 
 // Types of keys that can be pressed
 enum keytype

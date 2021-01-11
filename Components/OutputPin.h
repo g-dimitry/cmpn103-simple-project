@@ -7,7 +7,7 @@
  a component. The output pin propagates its value immediately to the associated connections
 */
 
-#include "Pin.h"
+#include "./Pin.h"
 class Connection; //Forward class declartion
 
 class OutputPin : public Pin //inherited from class Pin

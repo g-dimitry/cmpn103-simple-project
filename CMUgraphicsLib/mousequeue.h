@@ -7,7 +7,7 @@ This file was last modified on 05.16.1999
 #define MOUSEQUEUE_H
 
 #include <cstdlib>
-#include "version.h"
+#include "./version.h"
 
 // Which button -- no middle button for now
 enum button

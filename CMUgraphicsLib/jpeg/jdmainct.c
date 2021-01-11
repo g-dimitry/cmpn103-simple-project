@@ -14,8 +14,8 @@
  */
 
 #define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
+#include "./jinclude.h"
+#include "./jpeglib.h"
 
 /*
  * In the current system design, the main buffer need never be a full-image

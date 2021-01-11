@@ -13,7 +13,7 @@ This file was last modified on 05.16.1999
 #include <windows.h>
 #endif //WINDOWS_H
 
-#include "version.h"
+#include "./version.h"
 
 #ifdef __MS_VISUALCPP__
 using namespace std;

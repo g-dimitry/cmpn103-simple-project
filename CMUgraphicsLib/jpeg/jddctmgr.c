@@ -16,9 +16,9 @@
  */
 
 #define JPEG_INTERNALS
-#include "jinclude.h"
-#include "jpeglib.h"
-#include "jdct.h" /* Private declarations for DCT subsystem */
+#include "./jinclude.h"
+#include "./jpeglib.h"
+#include "./jdct.h" /* Private declarations for DCT subsystem */
 
 /*
  * The decompressor input side (jdinput.c) saves away the appropriate

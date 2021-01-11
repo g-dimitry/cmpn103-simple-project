@@ -6,7 +6,7 @@ This file was last modified on 05.16.1999
 #include <cstdlib>
 #include <windows.h>
 
-#include "auxil.h"
+#include "./auxil.h"
 
 // Pause for iTime milliseconds
 void Pause(const unsigned long ulTime)

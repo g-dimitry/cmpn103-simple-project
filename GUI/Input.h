@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../CMUgraphicsLib/CMUgraphics.h"
-#include "UI_Info.h"
+#include "./UI_Info.h"
 
 class Output;
 class Input //The application manager should have a pointer to this class

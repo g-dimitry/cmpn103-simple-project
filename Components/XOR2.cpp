@@ -1,4 +1,4 @@
-#include "XOR2.h"
+#include "./XOR2.h"
 
 XOR2::XOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 {

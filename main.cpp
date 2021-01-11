@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <cmath>
-#include "ApplicationManager.h"
+#include "./ApplicationManager.h"
 
 int main()
 {

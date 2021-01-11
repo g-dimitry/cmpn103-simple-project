@@ -6,7 +6,7 @@ This file was last modified on 05.16.1999
 #ifndef AUXILIARY_H
 #define AUXILIARY_H
 
-#include "version.h"
+#include "./version.h"
 
 // Pause for iTime milliseconds
 void Pause(const unsigned long ulTime);
