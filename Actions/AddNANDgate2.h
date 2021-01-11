@@ -1,13 +1,13 @@
 #pragma once
 #include "AddGate.h"
 #include "../ApplicationManager.h"
-#include "..\Components\NOT.h"
+#include "..\Components\NAND2.h"
 
 class ApplicationManager;
 
-class AddNOTGate : public AddGate<NOT>
+class AddNANDgate2 : public AddGate<NAND2>
 {
 public:
-	AddNOTGate(ApplicationManager* pApp);
+	AddNANDgate2(ApplicationManager* pApp);
 	void Draw(GraphicsInfo gInfo);
 };

@@ -19,7 +19,7 @@ Output::Output()
 	ChangeTitle("Programming Techniques Project");
 	CreateGrid();
 	CreateDesignToolBar(); //Create the desgin toolbar
-	CreateStatusBar();		 //Create Status bar
+	CreateStatusBar();	   //Create Status bar
 }
 
 Input *Output::CreateInput() const
@@ -45,15 +45,18 @@ void Output::ChangeTitle(string Title) const
 //////////////////////////////////////////////////////////////////////////////////
 void Output::CreateGrid() const
 {
-	pWind->SetBrush(color(223,223,223));
+	pWind->SetBrush(color(223, 223, 223));
 	pWind->SetPen(color(223, 223, 223), 2);
 	int rows = UI.height / UI.GridSize + 1;
 	int cols = UI.width / UI.GridSize + 1;
-	for (int i = 0; i < max(rows, cols); i++) {
-		if (i <= rows && i >= 0) {
+	for (int i = 0; i < max(rows, cols); i++)
+	{
+		if (i <= rows && i >= 0)
+		{
 			pWind->DrawRectangle(0, i * UI.GridSize - 1, UI.width, i * UI.GridSize + 1);
 		}
-		if (i <= cols && i >= 0) {
+		if (i <= cols && i >= 0)
+		{
 			pWind->DrawRectangle(i * UI.GridSize - 1, 0, i * UI.GridSize + 1, UI.height);
 		}
 	}
@@ -110,7 +113,19 @@ void Output::CreateDesignToolBar() const
 	//First prepare List of images for each menu item
 	string MenuItemImages[ITM_DSN_CNT];
 	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_OR2.jpg";
+	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_NOT] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_OR3] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_BUFFER] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_SWITCH] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_LED] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_WIRE] = "images\\Menu\\Menu_AND2.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
 	pWind->SetBrush(UI.BkGrndColor);
@@ -140,72 +155,72 @@ void Output::CreateSimulationToolBar() const
 void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawNot(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawOR3(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawBUFFER(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawWIRE(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.AND2_Width, UI.AND2_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 
 //TODO: Add similar functions to draw all components
@@ -220,14 +235,17 @@ Output::~Output()
 	delete pWind;
 }
 
-void Output::StartBuffer(){
+void Output::StartBuffer()
+{
 	pWind->SetBuffering(true);
 }
-void Output::EndBuffer(){
+void Output::EndBuffer()
+{
 	pWind->UpdateBuffer();
 	pWind->SetBuffering(false);
 }
-void Output::DrawErrorRectangle(GraphicsInfo g) {
+void Output::DrawErrorRectangle(GraphicsInfo g)
+{
 	pWind->SetBrush(RED);
 	pWind->DrawRectangle(g.x1, g.y1, g.x2, g.y2);
 }

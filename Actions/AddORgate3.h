@@ -1,6 +1,9 @@
 #pragma once
 #include "AddGate.h"
+#include "../ApplicationManager.h"
 #include "..\Components\OR3.h"
+
+class ApplicationManager;
 
 class AddORgate3 : public AddGate<OR3>
 {

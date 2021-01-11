@@ -1,5 +1,4 @@
 #pragma once
-#include "../ApplicationManager.h"
 class ApplicationManager;
 //Base class for all possible actions (abstract class)
 class Action
