@@ -10,6 +10,17 @@ class ApplicationManager;
 #include "./Actions/AddLED.h"
 #include "./Actions/AddSWITCH.h"
 
+#include "./Actions/changeSwitch.h"
+#include "./Actions/Delete.h"
+#include "./Actions/Deselect.h"
+#include "./Actions/DesignMode.h"
+#include "./Actions/EditLabel.h"
+#include "./Actions/Exit.h"
+#include "./Actions/Load.h"
+#include "./Actions/Save.h"
+#include "./Actions/Select.h"
+#include "./Actions/SimulationMode.h"
+
 //Main class that manages everything in the application.
 class ApplicationManager
 {

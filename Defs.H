@@ -20,31 +20,31 @@ enum ActionType
 	ADD_XOR_GATE_3,	 //Add 3-input XOR gate
 	ADD_Switch,			 //Add Switch
 	ADD_LED,				 //Add LED
-	ADD_CONNECTION,	 //Add Wire Connection
+	ADD_CONNECTION,	 //Add Wire Connection 
 
-	ADD_Label,	//Add Label to a Component, a Connection
+	ADD_Label,	//Add Label to a Component, a Connection x
 	EDIT_Label, //Edit Label of a Component, a Connection
 
-	Create_TruthTable, //Create Truth Table of the Circuit
+	Create_TruthTable, //Create Truth Table of the Circuit x
 
 	Change_Switch, //Change Switch Status in Simulation Mode
 
 	SELECT, //Select a Component, a Connection
 	DEL,		//Delete a Component, a Connection
-	MOVE,		//Move a Component, a Connection
+	MOVE,		//Move a Component, a Connection X
 
 	SAVE, //Save the whole Circuit to a file
 	LOAD, //Load a Circuit from a file
 
-	UNDO, //Undo the last Action preformed
-	REDO, //Redo the last Action canceled
+	UNDO, //Undo the last Action preformed x
+	REDO, //Redo the last Action canceled x
 
 	DSN_MODE, //Switch to Design mode
 	SIM_MODE, //Switch to Simulatiom mode
 
 	EXIT, //Exit the application
 
-	STATUS_BAR, //A click on the status bar
+	STATUS_BAR, //A click on the status bar x
 	DSN_TOOL,		//A click on an empty place in the design tool bar
 
 };

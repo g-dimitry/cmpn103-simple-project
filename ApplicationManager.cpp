@@ -127,6 +127,37 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_Switch:
 		pAct = new AddSWITCH(this, UI.SWITCH_WIDTH, UI.SWITCH_HEIGHT, "Switch");
 		break;
+	
+	case Change_Switch:
+		pAct = new changeSwitch(this);
+		break;
+	case DELETE:
+		pAct = new Delete(this);
+		break;
+	case DSN_TOOL:
+		pAct = new Deselect(this);
+		break;
+	case DSN_MODE:
+		pAct = new DesignMode(this);
+		break;
+	case EDIT_Label:
+		pAct = new EditLabel(this);
+		break;
+	case EXIT:
+		pAct = new Exit(this);
+		break;
+	case LOAD:
+		pAct = new Load(this);
+		break;
+	case SAVE:
+		pAct = new Save(this);
+		break;
+	case SELECT:
+		pAct = new Select(this);
+		break;
+	case SIM_MODE:
+		pAct = new SimulationMode(this);
+		break;
 	}
 
 
