@@ -1,17 +1,5 @@
 #include "ApplicationManager.h"
 
-//class AddANDgate2;
-//class AddANDgate3;
-//class AddBUFFERgate;
-//class AddNANDgate2;
-//class AddNORgate2;
-//class AddNOTgate;
-//class AddORgate2;
-//class AddORgate3;
-//class AddXNORgate2;
-//class AddXORgate2;
-//class AddXORgate3;
-
 ApplicationManager::ApplicationManager()
 {
 	//Creates the Input / Output Objects & Initialize the GUI
@@ -91,47 +79,47 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	switch (ActType)
 	{
 	case ADD_Buff:
-		pAct = new AddBUFFERgate(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_Buff);
 		break;
 
 	case ADD_INV:
-		pAct = new AddNOTGate(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_INV);
 		break;
 
 	case ADD_AND_GATE_2:
-		pAct = new AddANDgate2(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_AND_GATE_2);
 		break;
 
 	case ADD_OR_GATE_2:
-		pAct = new AddORgate2(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_OR_GATE_2);
 		break;
 
 	case ADD_NAND_GATE_2:
-		pAct = new AddNANDgate2(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_NAND_GATE_2);
 		break;
 
 	case ADD_NOR_GATE_2:
-		pAct = new AddNORgate2(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_NOR_GATE_2);
 		break;
 
 	case ADD_XOR_GATE_2:
-		pAct = new AddXORgate2(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_XOR_GATE_2);
 		break;
 
 	case ADD_XNOR_GATE_2:
-		pAct = new AddXNORgate2(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_XNOR_GATE_2);
 		break;
 
 	case ADD_AND_GATE_3:
-		pAct = new AddANDgate3(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_AND_GATE_3);
 		break;
 
 	case ADD_OR_GATE_3:
-		pAct = new AddORgate3(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_OR_GATE_3);
 		break;
 
 	case ADD_XOR_GATE_3:
-		pAct = new AddXORgate3(this);
+		pAct = new AddGate(this, UI.Gate_Width, UI.Gate_Height, 5, "Gate", ADD_XOR_GATE_3);
 		break;
 	}
 	// case ADD_Switch:

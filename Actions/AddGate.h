@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include "action.h"
+#include "../Components/Gate.h"
 #include "../Defs.H"
 class ApplicationManager;
 
-template <typename GateType>
 class AddGate : public Action
 {
 private:
@@ -13,12 +13,11 @@ private:
 	int x1, y1, x2, y2; //Two corners of the rectangluar area
 	int width, height, fanout;
 	std::string gateTitle;
-	GateType* gate;
+	Gate* gate;
+	ActionType actionType;
 public:
-	AddGate(ApplicationManager* pApp, int width, int height, int fanout, std::string gateTitle);
+	AddGate(ApplicationManager* pApp, int width, int height, int fanout, std::string gateTitle, ActionType actionType);
 	~AddGate();
-
-	void virtual Draw(GraphicsInfo g) = 0;
 
 	void ReadActionParameters();
 

@@ -6,6 +6,7 @@ class ApplicationManager;
 #include "./Actions/Action.h"
 #include "GUI\Output.h"
 #include "GUI\Input.h"
+#include "Actions/AddGate.h"
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -52,16 +53,3 @@ public:
 	//destructor
 	~ApplicationManager();
 }; 
-
-#include "Actions/AddGate.h"
-#include "Actions\AddANDgate3.h"
-#include "Actions\AddBUFFERgate.h"
-#include "Actions\AddNANDgate2.h"
-#include "Actions\AddNORgate2.h"
-#include "Actions\AddANDgate2.h"
-#include "Actions\AddNOTgate.h"
-#include "Actions\AddORgate2.h"
-#include "Actions\AddORgate3.h"
-#include "Actions\AddXNORgate2.h"
-#include "Actions\AddXORgate2.h"
-#include "Actions\AddXORgate3.h"

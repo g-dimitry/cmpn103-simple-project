@@ -1,5 +1,3 @@
-template <typename GateType>
-class AddGate;
 #include <iostream>
 #include <sstream>
 #include <cmath>

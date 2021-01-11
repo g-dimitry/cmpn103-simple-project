@@ -1,22 +1,23 @@
 #include "AddGate.h"
 #include "../ApplicationManager.h"
 
-template <typename GateType>
-AddGate<GateType>::AddGate(ApplicationManager *pApp, int width, int height, int fanout, std::string gateTitle) : Action(pApp)
+
+AddGate::AddGate(ApplicationManager *pApp, int width, int height, int fanout, std::string gateTitle, ActionType actionType) : Action(pApp)
 {
     this->width = width;
     this->height = height;
     this->fanout = fanout;
     this->gateTitle = gateTitle;
+    this->actionType = actionType;
 }
-template <typename GateType>
-AddGate<GateType>::~AddGate()
+
+AddGate::~AddGate()
 {
     delete this->gate;
 }
 
-template <typename GateType>
-void AddGate<GateType>::ReadActionParameters()
+
+void AddGate::ReadActionParameters()
 {
     //Get a Pointer to the Input / Output Interfaces
     Output *pOut = pManager->GetOutput();
@@ -42,7 +43,7 @@ void AddGate<GateType>::ReadActionParameters()
         GInfo.y1 = Cy - Wdth / 2;
         GInfo.y2 = Cy + Wdth / 2;
 
-        Component *tmp = new GateType(GInfo, 5);
+        Component *tmp = Gate::gateFactory(this->actionType, GInfo, 5);
         bool ComponentCollides = this->pManager->ComponentCollides(tmp);
         if (ComponentCollides)
         {
@@ -50,7 +51,7 @@ void AddGate<GateType>::ReadActionParameters()
         }
         else
         {
-            this->Draw(GInfo);
+            tmp->Draw(this->pManager->GetOutput());
         }
 
         pOut->CreateDesignToolBar();
@@ -71,8 +72,8 @@ void AddGate<GateType>::ReadActionParameters()
     pOut->ClearStatusBar();
 }
 
-template <typename GateType>
-void AddGate<GateType>::Execute()
+
+void AddGate::Execute()
 {
     ReadActionParameters();
 
@@ -86,19 +87,19 @@ void AddGate<GateType>::Execute()
     GInfo.x2 = Cx + Len / 2;
     GInfo.y1 = Cy - Wdth / 2;
     GInfo.y2 = Cy + Wdth / 2;
-    GateType *pA = new GateType(GInfo, this->fanout);
+    Gate* pA = Gate::gateFactory(this->actionType, GInfo, this->fanout);
     this->gate = pA;
     pManager->AddComponent(pA);
 }
 
-template <typename GateType>
-void AddGate<GateType>::Undo()
+
+void AddGate::Undo()
 {
     this->pManager->RemoveComponent(this->gate->getComponentId());
 }
 
-template <typename GateType>
-void AddGate<GateType>::Redo()
+
+void AddGate::Redo()
 {
     this->pManager->AddComponent(this->gate);
 }
