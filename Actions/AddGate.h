@@ -38,11 +38,15 @@ public:
 		do {
 			buttonstate state = pIn->GetMousePosition(Cx, Cy);
 			pOut->StartBuffer();
-
+			this->pManager->GetOutput()->CreateGrid();
 			this->pManager->UpdateInterface();
 
 			int Len = this->width;
 			int Wdth = this->height;
+			Cx = min(UI.width, max(0, Cx));
+			Cy = min(UI.height, max(0, Cy));
+			Cx = min(UI.width - Len / 2, max(Len / 2, roundf((float)Cx / UI.GridSize) * UI.GridSize));
+			Cy = min(UI.height - Wdth / 2 - UI.StatusBarHeight, max(Wdth/2 + UI.ToolBarHeight, roundf((float)Cy / UI.GridSize) * UI.GridSize));
 			GraphicsInfo GInfo;
 			GInfo.x1 = Cx - Len / 2;
 			GInfo.x2 = Cx + Len / 2;

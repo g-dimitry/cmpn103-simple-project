@@ -15,9 +15,9 @@ Output::Output()
 	UI.BkGrndColor = WHITE;
 
 	//Create the drawing window
-	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
+	pWind = CreateWind(UI.width + UI.widthError, UI.height + UI.heightError, UI.wx, UI.wy);
 	ChangeTitle("Programming Techniques Project");
-
+	CreateGrid();
 	CreateDesignToolBar(); //Create the desgin toolbar
 	CreateStatusBar();		 //Create Status bar
 }
@@ -43,6 +43,21 @@ void Output::ChangeTitle(string Title) const
 	pWind->ChangeTitle(Title);
 }
 //////////////////////////////////////////////////////////////////////////////////
+void Output::CreateGrid() const
+{
+	pWind->SetBrush(color(223,223,223));
+	pWind->SetPen(color(223, 223, 223), 2);
+	int rows = UI.height / UI.GridSize + 1;
+	int cols = UI.width / UI.GridSize + 1;
+	for (int i = 0; i < max(rows, cols); i++) {
+		if (i <= rows && i >= 0) {
+			pWind->DrawRectangle(0, i * UI.GridSize - 1, UI.width, i * UI.GridSize + 1);
+		}
+		if (i <= cols && i >= 0) {
+			pWind->DrawRectangle(i * UI.GridSize - 1, 0, i * UI.GridSize + 1, UI.height);
+		}
+	}
+}
 void Output::CreateStatusBar() const
 {
 	pWind->SetPen(UI.BkGrndColor);
