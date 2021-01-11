@@ -35,11 +35,11 @@ ActionType Input::GetUserAction() const
 	if (UI.AppMode == DESIGN) //application is in design mode
 	{
 		//[1] If user clicks on the Toolbar
-		if (y >= 0 && y < UI.ToolBarHeight)
+		if (y >= UI.ToolBarHeight && y < UI.ToolBarHeight + UI.GateBarHeight)
 		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
-			int ClickedItemOrder = (x / UI.ToolBarItemWidth);
+			int ClickedItemOrder = (x / UI.GateBarItemWidth);
 			//Divide x coord of the point clicked by the menu item width (int division)
 			//if division result is 0 ==> first item is clicked, if 1 ==> 2nd item and so on
 

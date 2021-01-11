@@ -47,6 +47,7 @@ public:
 
 	void StartBuffer();
 	void EndBuffer();
+	void Output::CreateToolBar() const;
 
 	~Output();
 };

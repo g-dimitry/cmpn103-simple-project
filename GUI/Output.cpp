@@ -18,6 +18,7 @@ Output::Output()
 	pWind = CreateWind(UI.width + UI.widthError, UI.height + UI.heightError, UI.wx, UI.wy);
 	ChangeTitle("Programming Techniques Project");
 	CreateGrid();
+	CreateToolBar(); //Create the desgin toolbar
 	CreateDesignToolBar(); //Create the desgin toolbar
 	CreateStatusBar();	   //Create Status bar
 }
@@ -129,15 +130,36 @@ void Output::CreateDesignToolBar() const
 
 	//TODO: Prepare image for each menu item and add it to the list
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight + UI.GateBarHeight);
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < ITM_DSN_CNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i * UI.ToolBarItemWidth, 0, UI.ToolBarItemWidth, UI.ToolBarHeight);
+		pWind->DrawImage(MenuItemImages[i], i * UI.GateBarItemWidth, UI.GateBarHeight, UI.GateBarItemWidth, UI.GateBarHeight);
+}
+void Output::CreateToolBar() const
+{
+	string MenuItemImages[TOOL_BAR_ITEM_COUNT];
+	MenuItemImages[ITEM_EDIT] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_DELETE] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_COPY] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_CUT] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_PASTE] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_UNDO] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_REDO] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_PLAY] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_PAUSE] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_TRUTHTABLE] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_SAVE] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_LOAD] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_EXIT] = "images\\Menu\\Menu_AND2.jpg";
 
-	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+	//TODO: Prepare image for each menu item and add it to the list
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
+
+	//Draw menu item one image at a time
+	for (int i = 0; i < TOOL_BAR_ITEM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.ToolBarItemWidth, 0, UI.ToolBarItemWidth, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 //Draws the menu (toolbar) in the simulation mode

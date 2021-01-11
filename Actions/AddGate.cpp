@@ -54,6 +54,7 @@ void AddGate::ReadActionParameters()
             tmp->Draw(this->pManager->GetOutput());
         }
 
+        pOut->CreateToolBar();
         pOut->CreateDesignToolBar();
         pOut->CreateSimulationToolBar();
         pOut->CreateStatusBar();

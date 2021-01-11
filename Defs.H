@@ -84,6 +84,23 @@ enum DsgnMenuItem //The items of the design menu (you should add more items)
 
 };
 
+enum ToolBarItem {
+	ITEM_EDIT,
+	ITEM_DELETE,
+	ITEM_COPY,
+	ITEM_CUT,
+	ITEM_PASTE,
+	ITEM_UNDO,
+	ITEM_REDO,
+	ITEM_PLAY,
+	ITEM_PAUSE,
+	ITEM_TRUTHTABLE,
+	ITEM_SAVE,
+	ITEM_LOAD,
+	ITEM_EXIT,
+	TOOL_BAR_ITEM_COUNT,
+};
+
 enum SimMenuItem //The items of the simulation menu (you should add more items)
 {
 	//Note: Items are ordered here as they appear in menu
