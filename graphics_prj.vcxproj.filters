@@ -227,6 +227,9 @@
     <ClCompile Include="Actions\AddConnection.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\Astar\Astar.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -418,6 +421,9 @@
     </ClInclude>
     <ClInclude Include="Actions\AddConnection.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Astar\Astar.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

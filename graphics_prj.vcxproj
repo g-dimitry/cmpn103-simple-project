@@ -201,6 +201,7 @@
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Utils\Astar\Astar.cpp" />
     <ClCompile Include="Utils\LodePNG\LodePNG.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +268,7 @@
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="Utils\Array\Array.h" />
+    <ClInclude Include="Utils\Astar\Astar.h" />
     <ClInclude Include="Utils\LodePNG\LodePNG.h" />
   </ItemGroup>
   <ItemGroup>

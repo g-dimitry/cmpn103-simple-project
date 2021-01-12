@@ -1,6 +1,7 @@
 #pragma once
 #include "../Defs.h"
 #include "./Input.h"
+#include "../Utils/Astar/Astar.h"
 
 class Output //The application manager should have a pointer to this class
 {
@@ -40,7 +41,7 @@ public:
 	///TODO: Make similar functions for drawing all other gates, switch, and LED, .. etc
 
 	// Draws Connection
-	void DrawConnection(GraphicsInfo r_GfxInfo, bool selected = false) const;
+	void DrawConnection(GraphicsInfo r_GfxInfo, vector<AStar::Pair> pointsVector, bool selected = false) const;
 
 	void PrintMsg(string msg) const; //Print a message on Status bar
 	void DrawErrorRectangle(GraphicsInfo g);
