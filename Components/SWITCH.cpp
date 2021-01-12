@@ -39,3 +39,7 @@ int SWITCH::GetInputPinStatus(int n)
 void SWITCH::setInputPinStatus(int n, STATUS s)
 {
 }
+
+SWITCH* SWITCH::clone() {
+	return new SWITCH(this->m_GfxInfo);
+}

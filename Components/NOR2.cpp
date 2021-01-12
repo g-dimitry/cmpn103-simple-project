@@ -40,3 +40,8 @@ void NOR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+NOR2* NOR2::clone() {
+	return new NOR2(this->m_GfxInfo, 5);
+}
+

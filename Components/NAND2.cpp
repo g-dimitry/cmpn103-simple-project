@@ -40,3 +40,7 @@ void NAND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+NAND2* NAND2::clone() {
+	return new NAND2(this->m_GfxInfo, 5);
+}

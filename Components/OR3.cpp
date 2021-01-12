@@ -40,3 +40,7 @@ void OR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+OR3* OR3::clone() {
+	return new OR3(this->m_GfxInfo, 5);
+}

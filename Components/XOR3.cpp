@@ -40,3 +40,8 @@ void XOR3::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+XOR3* XOR3::clone() {
+	return new XOR3(this->m_GfxInfo, 5);
+}
+

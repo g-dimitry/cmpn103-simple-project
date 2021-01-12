@@ -215,6 +215,12 @@
     <ClCompile Include="Actions\SimulationMode.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\copy.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\cut.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defs.H" />
@@ -393,6 +399,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="Actions\SimulationMode.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\copy.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\cut.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

@@ -36,6 +36,10 @@ enum ActionType
 	SAVE, //Save the whole Circuit to a file
 	LOAD, //Load a Circuit from a file
 
+	COPY,
+	CUT,
+	PASTE,
+
 	UNDO, //Undo the last Action preformed x
 	REDO, //Redo the last Action canceled x
 

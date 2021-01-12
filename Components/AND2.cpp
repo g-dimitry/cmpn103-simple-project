@@ -40,3 +40,7 @@ void AND2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+AND2* AND2::clone() {
+	return new AND2(this->m_GfxInfo, 5);
+}

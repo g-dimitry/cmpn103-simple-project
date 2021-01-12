@@ -41,7 +41,41 @@ ActionType Input::GetUserAction() const
 	{
 		if (y >= 0 && y < UI.ToolBarHeight)
 		{
-			return SELECT; //user want to select/unselect a component
+			//Check whick Menu item was clicked
+			//==> This assumes that menu items are lined up horizontally <==
+			int ClickedItemOrder = (x / UI.ToolBarItemWidth);
+
+			switch (ClickedItemOrder)
+			{
+			case ITEM_EDIT:
+				return ActionType::EDIT_Label;
+			case ITEM_DELETE:
+				return ActionType::DEL;
+			case ITEM_COPY:
+				return ActionType::COPY;
+			case ITEM_CUT:
+				return ActionType::CUT;
+			case ITEM_PASTE:
+				return ActionType::PASTE;
+			case ITEM_UNDO:
+				return ActionType::UNDO;
+			case ITEM_REDO:
+				return ActionType::REDO;
+			case ITEM_PLAY:
+				return ActionType::SIM_MODE;
+			case ITEM_PAUSE:
+				return ActionType::DSN_MODE;
+			case ITEM_TRUTHTABLE:
+				return ADD_XOR_GATE_2;
+			case ITEM_SAVE:
+				return ADD_XOR_GATE_2;
+			case ITEM_LOAD:
+				return ADD_XOR_GATE_2;
+			case ITEM_EXIT:
+				return ADD_XOR_GATE_2;
+			case TOOL_BAR_ITEM_COUNT:
+				return ADD_XOR_GATE_2;
+			}
 		}
 		//[1] If user clicks on the Toolbar
 		else if (y >= UI.ToolBarHeight && y < UI.ToolBarHeight + UI.GateBarHeight)

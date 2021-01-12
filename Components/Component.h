@@ -41,6 +41,7 @@ public:
 
 	bool Collides(Component* comp);
 	bool Collides(GraphicsInfo gInfo);
+	virtual Component* clone () = 0;
 };
 
 #endif

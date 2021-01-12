@@ -40,3 +40,7 @@ void BUFFER::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+BUFFER* BUFFER::clone() {
+	return new BUFFER(this->m_GfxInfo, 5);
+}

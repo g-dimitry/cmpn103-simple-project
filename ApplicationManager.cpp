@@ -41,8 +41,8 @@ bool ApplicationManager::GetComponentByID(int ID, Component **out)
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::RemoveComponent(int ID)
 {
-	Component **comp;
-	if (this->GetComponentByID(ID, comp))
+	Component *comp;
+	if (this->GetComponentByID(ID, &comp))
 	{
 		CompList.filter([=](Component *comp) {
 			if (comp->getComponentId() == ID)
@@ -185,6 +185,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SIM_MODE:
 		pAct = new SimulationMode(this);
 		break;
+	case COPY:
+		pAct = new Copy(this);
+		break;
+	case CUT:
+		pAct = new Cut(this);
+		break;
 	}
 
 
@@ -228,6 +234,37 @@ void ApplicationManager::deselectAll()
 	cout << this->getSelectedComponentsCount();
 	this->CompList.forEach([=](Component *comp) {
 		comp->setSelected(false);
+	});
+}
+
+////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::PushToClipboard(Component* comp) {
+	this->Clipboard.push(comp);
+}
+
+/////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::copySelectedComponents()
+{
+	this->Clipboard.filter([=] (Component* comp) {return false;});
+	this->CompList.forEach([=](Component* comp) {
+		if (comp->getSelected()) {
+			this->PushToClipboard(comp->clone());
+		}
+	});
+}
+
+/////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::cutSelectedComponents()
+{
+	this->Clipboard.filter([=] (Component* comp) {return false;});
+	this->CompList.forEach([=](Component* comp) {
+		if (comp->getSelected()) {
+			this->PushToClipboard(comp->clone());
+			this->RemoveComponent(comp->getComponentId());
+		}
 	});
 }
 

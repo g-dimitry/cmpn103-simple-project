@@ -19,6 +19,8 @@ class ApplicationManager;
 #include "./Actions/Load.h"
 #include "./Actions/Save.h"
 #include "./Actions/Select.h"
+#include "./Actions/Copy.h"
+#include "./Actions/Cut.h"
 #include "./Actions/SimulationMode.h"
 
 //Main class that manages everything in the application.
@@ -34,6 +36,7 @@ class ApplicationManager
 private:
 	Array<Component*> CompList; //List of all Components (Array of pointers)
 	Array<Action*> ActionStack;
+	Array<Component*> Clipboard;
 	int currentStackPosition;
 
 	Output *OutputInterface; //pointer to the Output Clase Interface
@@ -59,12 +62,15 @@ public:
 	void AddComponent(Component *pComp);
 	void RemoveComponent(int ID);
 	void RemoveComponents(Array<int> arr);
+	void PushToClipboard(Component* comp);
 
 	bool GetComponentByID(int ID, Component** out);
 	bool ComponentCollides(Component* comp, Component** collidedComponent = NULL);
 	bool ComponentCollides(GraphicsInfo gInfo, Component** collidedComponent = NULL);
 	int getSelectedComponentsCount();
 	void deselectAll();
+	void copySelectedComponents();
+	void cutSelectedComponents();
 
 	//destructor
 	~ApplicationManager();

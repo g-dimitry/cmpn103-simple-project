@@ -40,3 +40,8 @@ void NOT::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+NOT* NOT::clone() {
+	return new NOT(this->m_GfxInfo, 5);
+}
+

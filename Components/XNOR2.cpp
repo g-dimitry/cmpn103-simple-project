@@ -40,3 +40,7 @@ void XNOR2::setInputPinStatus(int n, STATUS s)
 {
 	m_InputPins[n - 1].setStatus(s);
 }
+
+XNOR2* XNOR2::clone() {
+	return new XNOR2(this->m_GfxInfo, 5);
+}

@@ -39,3 +39,7 @@ int LED::GetInputPinStatus(int n)
 void LED::setInputPinStatus(int n, STATUS s)
 {
 }
+
+LED* LED::clone() {
+	return new LED(this->m_GfxInfo);
+}

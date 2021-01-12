@@ -130,6 +130,8 @@
     <ClCompile Include="Actions\AddLED.cpp" />
     <ClCompile Include="Actions\AddSWITCH.cpp" />
     <ClCompile Include="Actions\changeSwitch.cpp" />
+    <ClCompile Include="Actions\copy.cpp" />
+    <ClCompile Include="Actions\cut.cpp" />
     <ClCompile Include="Actions\Delete.cpp" />
     <ClCompile Include="Actions\Deselect.cpp" />
     <ClCompile Include="Actions\DesignMode.cpp" />
@@ -205,6 +207,8 @@
     <ClInclude Include="Actions\AddLED.h" />
     <ClInclude Include="Actions\AddSWITCH.h" />
     <ClInclude Include="Actions\changeSwitch.h" />
+    <ClInclude Include="Actions\copy.h" />
+    <ClInclude Include="Actions\cut.h" />
     <ClInclude Include="Actions\Delete.h" />
     <ClInclude Include="Actions\Deselect.h" />
     <ClInclude Include="Actions\DesignMode.h" />
