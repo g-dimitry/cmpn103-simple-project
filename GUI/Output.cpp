@@ -178,13 +178,13 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\active\\AND2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\highlighted\\AND2.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {

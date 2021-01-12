@@ -78,6 +78,7 @@ void AddConnection::Execute()
     int pinNumber = -1;
     if (Gate *DestGate = dynamic_cast<Gate *>(DestComponent))
     {
+        pinCount = DestGate->getInputsCount();
         if (x > DestGate->getGraphicsInfo().x1 + 8)
         {
             return;
