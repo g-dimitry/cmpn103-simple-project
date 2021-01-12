@@ -326,10 +326,10 @@ void ApplicationManager::pasteClipboard(int &x, int &y, Array<Component *> *arr)
 	int boundryHeight = y2 - y1;
 	this->Clipboard.forEach([&](Component *comp) {
 		GraphicsInfo compInfo = comp->getGraphicsInfo();
-		compInfo.x1 -= x1 + boundryWidth / 2;
-		compInfo.x2 -= x1 + boundryWidth / 2;
-		compInfo.y1 -= y1 + boundryHeight / 2;
-		compInfo.y2 -= y1 + boundryHeight / 2;
+		compInfo.x1 -= x1 + boundryWidth / 2 / UI.GridSize * UI.GridSize;
+		compInfo.x2 -= x1 + boundryWidth / 2 / UI.GridSize * UI.GridSize;
+		compInfo.y1 -= y1 + boundryHeight / 2 / UI.GridSize * UI.GridSize;
+		compInfo.y2 -= y1 + boundryHeight / 2 / UI.GridSize * UI.GridSize;
 		comp->setGraphicsInfo(compInfo);
 	});
 
