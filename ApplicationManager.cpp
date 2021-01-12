@@ -68,6 +68,9 @@ bool ApplicationManager::ComponentCollides(Component *comp, Component **collided
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
+		if (dynamic_cast<Connection*>(comp2)) {
+			return false;
+		}
 		return comp->Collides(comp2);
 	});
 	if (arr.getCount() > 0)

@@ -14,6 +14,7 @@ void AddConnection::ReadActionParameters()
 
 void AddConnection::Execute()
 {
+    this->pManager->GetOutput()->PrintMsg("Please select an output pin");
     int x, y = 0;
     this->pManager->GetInput()->WaitMouseClick(x, y);
     GraphicsInfo srcGInfo;
@@ -35,10 +36,12 @@ void AddConnection::Execute()
     {
         if (x < SrcComp->getGraphicsInfo().x2 - 8)
         {
+            this->pManager->GetOutput()->PrintMsg("Not an output pin");
             return;
         }
         if (!(y > SrcComp->getGraphicsInfo().y1 + UI.Gate_Height / 2 - 4 && y < SrcComp->getGraphicsInfo().y1 + UI.Gate_Height / 2 + 4))
         {
+            this->pManager->GetOutput()->PrintMsg("Not an output pin");
             return;
         }
     }
@@ -46,18 +49,22 @@ void AddConnection::Execute()
     {
         if (x < SrcComp->getGraphicsInfo().x2 - 8)
         {
+            this->pManager->GetOutput()->PrintMsg("Not an output pin");
             return;
         }
         if (!(y > SrcComp->getGraphicsInfo().y1 + UI.Gate_Height / 2 - 4 && y < SrcComp->getGraphicsInfo().y1 + UI.Gate_Height / 2 + 4))
         {
+            this->pManager->GetOutput()->PrintMsg("Not an output pin");
             return;
         }
     }
     else if (LED *led = dynamic_cast<LED *>(SrcComp))
     {
+        this->pManager->GetOutput()->PrintMsg("Not an output pin");
         return;
     }
     ////////////////////////////////////////////////////
+    this->pManager->GetOutput()->PrintMsg("Please select an input pin");
     this->pManager->GetInput()->WaitMouseClick(x, y);
     GraphicsInfo destGInfo;
     destGInfo.x1 = x;
@@ -68,10 +75,12 @@ void AddConnection::Execute()
     bool destCollides = this->pManager->ComponentCollides(destGInfo, &DestComponent);
     if (!destCollides)
     {
+        this->pManager->GetOutput()->PrintMsg("Not an input pin");
         return;
     }
     if (dynamic_cast<Connection *>(DestComponent))
     {
+        this->pManager->GetOutput()->PrintMsg("Not an input pin");
         return;
     }
     int pinCount = 1;
@@ -81,6 +90,7 @@ void AddConnection::Execute()
         pinCount = DestGate->getInputsCount();
         if (x > DestGate->getGraphicsInfo().x1 + 8)
         {
+            this->pManager->GetOutput()->PrintMsg("Not an input pin");
             return;
         }
         if (pinCount == 1)
@@ -119,16 +129,19 @@ void AddConnection::Execute()
     }
     else if (SWITCH *sw = dynamic_cast<SWITCH *>(DestComponent))
     {
+        this->pManager->GetOutput()->PrintMsg("Not an input pin");
         return;
     }
     else if (LED *led = dynamic_cast<LED *>(DestComponent))
     {
         if (x > led->getGraphicsInfo().x1 + 8)
         {
+            this->pManager->GetOutput()->PrintMsg("Not an input pin");
             return;
         }
         if (y < led->getGraphicsInfo().y1 + UI.SWITCH_HEIGHT / 2 - 4 || y > led->getGraphicsInfo().y1 + UI.SWITCH_HEIGHT / 2 + 4)
         {
+            this->pManager->GetOutput()->PrintMsg("Not an input pin");
             return;
         }
         pinCount = 1;
@@ -136,6 +149,7 @@ void AddConnection::Execute()
     }
     if (pinNumber == -1)
     {
+        this->pManager->GetOutput()->PrintMsg("Not an input pin");
         return;
     }
     GraphicsInfo gInfo;
@@ -173,11 +187,13 @@ void AddConnection::Execute()
         }
     }
     if (this->pManager->inputPinHasConnection(DestComponent->getInputPin(pinNumber))) {
+        this->pManager->GetOutput()->PrintMsg("Input pin has a connection already");
         return;
     }
     Connection *conn = new Connection(gInfo, SrcComp->getOutputPin(), DestComponent->getInputPin(pinNumber));
     SrcComp->getOutputPin()->ConnectTo(conn);
     this->pManager->AddComponent(conn);
+    this->pManager->GetOutput()->ClearStatusBar();
 }
 
 void AddConnection::Undo()
