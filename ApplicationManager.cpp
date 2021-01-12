@@ -15,8 +15,10 @@ void ApplicationManager::AddComponent(Component *pComp)
 ////////////////////////////////////////////////////////////////////
 bool ApplicationManager::GetComponentByID(int ID, Component **out)
 {
-	for (int i = 0; i < CompList.getCount(); i++) {
-		if (CompList.getData()[i]->getComponentId() == ID) {
+	for (int i = 0; i < CompList.getCount(); i++)
+	{
+		if (CompList.getData()[i]->getComponentId() == ID)
+		{
 			*out = CompList.getData()[i];
 			return true;
 		}
@@ -61,7 +63,7 @@ void ApplicationManager::RemoveComponents(Array<int> arr)
 	});
 }
 ////////////////////////////////////////////////////////////////////
-bool ApplicationManager::ComponentCollides(Component *comp, Component** collidedComp)
+bool ApplicationManager::ComponentCollides(Component *comp, Component **collidedComp)
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
@@ -69,7 +71,8 @@ bool ApplicationManager::ComponentCollides(Component *comp, Component** collided
 	});
 	if (arr.getCount() > 0)
 	{
-		if (collidedComp) {
+		if (collidedComp)
+		{
 			*collidedComp = arr.getData()[0];
 		}
 		return true;
@@ -77,7 +80,7 @@ bool ApplicationManager::ComponentCollides(Component *comp, Component** collided
 	return false;
 }
 ////////////////////////////////////////////////////////////////////
-bool ApplicationManager::ComponentCollides(GraphicsInfo gInfo, Component** collidedComp)
+bool ApplicationManager::ComponentCollides(GraphicsInfo gInfo, Component **collidedComp)
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
@@ -154,7 +157,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case ADD_Switch:
 		pAct = new AddSWITCH(this, UI.SWITCH_WIDTH, UI.SWITCH_HEIGHT, "Switch");
 		break;
-	
+
 	case Change_Switch:
 		pAct = new changeSwitch(this);
 		break;
@@ -191,8 +194,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case CUT:
 		pAct = new Cut(this);
 		break;
+	case PASTE:
+		pAct = new Paste(this);
+		break;
 	}
-
 
 	// case ADD_CONNECTION:
 	// 	pAct = new AddANDgate2(this);
@@ -227,6 +232,13 @@ int ApplicationManager::getSelectedComponentsCount()
 	return arr.getCount();
 }
 
+///////////////////////////////////////////////////////////////////
+
+int ApplicationManager::getClipboardCount ()
+{
+	return this->Clipboard.getCount();
+}
+
 ////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::deselectAll()
@@ -239,7 +251,8 @@ void ApplicationManager::deselectAll()
 
 ////////////////////////////////////////////////////////////////////
 
-void ApplicationManager::PushToClipboard(Component* comp) {
+void ApplicationManager::PushToClipboard(Component *comp)
+{
 	this->Clipboard.push(comp);
 }
 
@@ -247,25 +260,139 @@ void ApplicationManager::PushToClipboard(Component* comp) {
 
 void ApplicationManager::copySelectedComponents()
 {
-	this->Clipboard.filter([=] (Component* comp) {return false;});
-	this->CompList.forEach([=](Component* comp) {
-		if (comp->getSelected()) {
+	this->Clipboard.filter([=](Component *comp) { return false; });
+	this->CompList.forEach([=](Component *comp) {
+		if (comp->getSelected())
+		{
 			this->PushToClipboard(comp->clone());
 		}
 	});
+	// aaa
 }
 
 /////////////////////////////////////////////////////////////////////
 
 void ApplicationManager::cutSelectedComponents()
 {
-	this->Clipboard.filter([=] (Component* comp) {return false;});
-	this->CompList.forEach([=](Component* comp) {
-		if (comp->getSelected()) {
+	Array<int> IDSArray;
+	this->Clipboard.filter([=](Component *comp) { return false; });
+	this->CompList.forEach([&](Component *comp) {
+		if (comp->getSelected())
+		{
 			this->PushToClipboard(comp->clone());
-			this->RemoveComponent(comp->getComponentId());
+			IDSArray.push(comp->getComponentId());
 		}
 	});
+	IDSArray.forEach([=](int ID) {
+		this->RemoveComponent(ID);
+	});
+}
+
+////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::pasteClipboard(int &x, int &y, Array<Component*>* arr)
+{
+	int x1 = 9999, x2 = 0, y1 = 99999, y2 = 0; // x1 -> smallest x , x2 -> largest x
+	this->Clipboard.forEach([&](Component *comp) {
+		GraphicsInfo compInfo = comp->getGraphicsInfo();
+		if (compInfo.x1 < x1)
+		{
+			x1 = compInfo.x1;
+		}
+		if (compInfo.y1 < y1)
+		{
+			y1 = compInfo.y1;
+		}
+		if (compInfo.x2 > x2)
+		{
+			x2 = compInfo.x2;
+		}
+		if (compInfo.y2 > y2)
+		{
+			y2 = compInfo.y2;
+		}
+	});
+	int boundryWidth = x2 - x1;
+	int boundryHeight = y2 - y1;
+	this->Clipboard.forEach([&](Component *comp) {
+		GraphicsInfo compInfo = comp->getGraphicsInfo();
+		compInfo.x1 -= x1 + boundryWidth / 2;
+		compInfo.x2 -= x1 + boundryWidth / 2;
+		compInfo.y1 -= y1 + boundryHeight / 2;
+		compInfo.y2 -= y1 + boundryHeight / 2;
+		comp->setGraphicsInfo(compInfo);
+	});
+
+	/////////////////////////////////////////////////////////////////
+	Output *pOut = this->GetOutput();
+	Input *pIn = this->GetInput();
+
+	bool shouldEndDrag = false;
+	do
+	{
+		int Cx, Cy = 0;
+
+		buttonstate state = pIn->GetMousePosition(Cx, Cy);
+		x = Cx;
+		y = Cy;
+		pOut->StartBuffer();
+		this->GetOutput()->CreateGrid();
+		this->UpdateInterface();
+
+		int Len = boundryWidth;
+		int Wdth = boundryHeight;
+		Cx = min(UI.width, max(0, Cx));
+		Cy = min(UI.height, max(0, Cy));
+		Cx = min(UI.width - Len / 2, max(Len / 2, roundf((float)Cx / UI.GridSize) * UI.GridSize));
+		Cy = min(UI.height - Wdth / 2 - UI.StatusBarHeight, max(Wdth / 2 + UI.ToolBarHeight, roundf((float)Cy / UI.GridSize) * UI.GridSize));
+
+		bool anyComponentCollides = false;
+		arr->filter([](Component* comp) {return false; });
+		this->Clipboard.forEach([&](Component *comp) {
+			Component* tmp = comp->clone();
+			GraphicsInfo GInfo;
+			GInfo.x1 = Cx + comp->getGraphicsInfo().x1;
+			GInfo.x2 = Cx + comp->getGraphicsInfo().x2;
+			GInfo.y1 = Cy + comp->getGraphicsInfo().y1;
+			GInfo.y2 = Cy + comp->getGraphicsInfo().y2;
+			tmp->setGraphicsInfo(GInfo);
+			arr->push(tmp);
+			bool ComponentCollides = this->ComponentCollides(tmp);
+			if (ComponentCollides)
+			{
+				anyComponentCollides = true;
+				pOut->DrawErrorRectangle(GInfo);
+			}
+			else
+			{
+				tmp->Draw(this->GetOutput());
+				cout << "=====================================" << endl;
+				cout << Cx << endl;
+				cout << Cy << endl;
+				cout << tmp->getGraphicsInfo().x1 << endl;
+				cout << tmp->getGraphicsInfo().y1 << endl;
+				cout << tmp->getGraphicsInfo().x2 << endl;
+				cout << tmp->getGraphicsInfo().y2 << endl;
+			}
+		});
+
+		pOut->CreateToolBar();
+		pOut->CreateDesignToolBar();
+		pOut->CreateSimulationToolBar();
+		pOut->CreateStatusBar();
+		pOut->EndBuffer();
+
+		if (state == BUTTON_DOWN)
+		{
+			if (!anyComponentCollides)
+			{
+
+				shouldEndDrag = true;
+			}
+		}
+	} while (!shouldEndDrag);
+	pOut->ClearStatusBar();
+	this->GetInput()->FlushMouse();
 }
 
 ////////////////////////////////////////////////////////////////////
@@ -287,4 +414,3 @@ ApplicationManager::~ApplicationManager()
 	delete OutputInterface;
 	delete InputInterface;
 }
-

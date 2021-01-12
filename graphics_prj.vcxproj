@@ -138,6 +138,7 @@
     <ClCompile Include="Actions\EditLabel.cpp" />
     <ClCompile Include="Actions\Exit.cpp" />
     <ClCompile Include="Actions\Load.cpp" />
+    <ClCompile Include="Actions\paste.cpp" />
     <ClCompile Include="Actions\Save.cpp" />
     <ClCompile Include="Actions\Select.cpp" />
     <ClCompile Include="Actions\SimulationMode.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Actions\EditLabel.h" />
     <ClInclude Include="Actions\Exit.h" />
     <ClInclude Include="Actions\Load.h" />
+    <ClInclude Include="Actions\paste.h" />
     <ClInclude Include="Actions\Save.h" />
     <ClInclude Include="Actions\Select.h" />
     <ClInclude Include="Actions\SimulationMode.h" />

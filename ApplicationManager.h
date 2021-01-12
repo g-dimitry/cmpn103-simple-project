@@ -21,6 +21,7 @@ class ApplicationManager;
 #include "./Actions/Select.h"
 #include "./Actions/Copy.h"
 #include "./Actions/Cut.h"
+#include "./Actions/Paste.h"
 #include "./Actions/SimulationMode.h"
 
 //Main class that manages everything in the application.
@@ -68,9 +69,11 @@ public:
 	bool ComponentCollides(Component* comp, Component** collidedComponent = NULL);
 	bool ComponentCollides(GraphicsInfo gInfo, Component** collidedComponent = NULL);
 	int getSelectedComponentsCount();
+	int getClipboardCount();
 	void deselectAll();
 	void copySelectedComponents();
 	void cutSelectedComponents();
+	void pasteClipboard(int &Cx, int &Cy, Array<Component*>* arr);
 
 	//destructor
 	~ApplicationManager();
