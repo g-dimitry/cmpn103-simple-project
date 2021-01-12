@@ -32,9 +32,14 @@ void Connection::Operate()
 	DstPin->setStatus((STATUS)SrcPin->getStatus());
 }
 
+void Connection::setPointsVector(vector<AStar::Pair> v)
+{
+	this->pointsVector = v;
+}
+
 void Connection::Draw(Output *pOut)
 {
-	pOut->DrawConnection(m_GfxInfo, this->getSelected());
+	pOut->DrawConnection(m_GfxInfo, this->pointsVector, this->getSelected());
 }
 
 int Connection::GetOutPinStatus() //returns status of outputpin if LED, return -1
@@ -52,12 +57,15 @@ void Connection::setInputPinStatus(int n, STATUS s)
 	SrcPin->setStatus(s);
 }
 
-Connection * Connection::clone() {
+Connection *Connection::clone()
+{
 	return NULL;
 }
-InputPin * Connection::getInputPin(int n) {
+InputPin *Connection::getInputPin(int n)
+{
 	return NULL;
 }
-OutputPin * Connection::getOutputPin() {
+OutputPin *Connection::getOutputPin()
+{
 	return NULL;
 }

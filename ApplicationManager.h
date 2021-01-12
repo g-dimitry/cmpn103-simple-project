@@ -24,6 +24,8 @@ class ApplicationManager;
 #include "./Actions/Paste.h"
 #include "./Actions/SimulationMode.h"
 
+#include "./Utils/Astar/Astar.h"
+
 //Main class that manages everything in the application.
 class ApplicationManager
 {
@@ -75,6 +77,7 @@ public:
 	void cutSelectedComponents();
 	void pasteClipboard(int &Cx, int &Cy, Array<Component*>* arr);
 	bool inputPinHasConnection(InputPin* inputPin);
+	void generateGrid(int grid[][82]);
 	//destructor
 	~ApplicationManager();
 }; 

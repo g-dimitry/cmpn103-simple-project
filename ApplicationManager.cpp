@@ -215,7 +215,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::UpdateInterface()
 {
 	this->GetOutput()->ClearDrawingArea();
-	CompList.forEach([=](Component *comp) {
+	int grid[47][82];
+	generateGrid(grid);
+	CompList.forEach([&](Component *comp) {
+		if (Connection *conn = dynamic_cast<Connection *>(comp))
+		{
+			vector<AStar::Pair> pointsVector;
+			conn->setPointsVector(AStar::getShortestPath(grid, make_pair(conn->getGraphicsInfo().x1 / UI.GridSize, conn->getGraphicsInfo().y1 / UI.GridSize), make_pair(conn->getGraphicsInfo().x2 / UI.GridSize, conn->getGraphicsInfo().y2 / UI.GridSize)));
+		}
 		comp->Draw(OutputInterface);
 	});
 }
@@ -417,12 +424,43 @@ ApplicationManager::~ApplicationManager()
 
 bool ApplicationManager::inputPinHasConnection(InputPin *inputPin)
 {
-	Array<Component*> arr = this->CompList.clone();
-	arr.filter([=](Component* comp) {
-		if (Connection* conn = dynamic_cast<Connection*>(comp)) {
+	Array<Component *> arr = this->CompList.clone();
+	arr.filter([=](Component *comp) {
+		if (Connection *conn = dynamic_cast<Connection *>(comp))
+		{
 			return conn->getDestPin() == inputPin;
 		}
 		return false;
 	});
 	return arr.getCount() != 0;
+}
+
+void ApplicationManager::generateGrid(int grid[][82])
+{
+	for (int i = 0; i < 47; i++)
+	{
+		for (int j = 0; j < 82; j++)
+		{
+			grid[i][j] = 1;
+		}
+	}
+	this->CompList.forEach([=](Component *comp) {
+		if (dynamic_cast<Connection *>(comp))
+		{
+			return;
+		}
+		GraphicsInfo gInfo = comp->getGraphicsInfo();
+		int startX = gInfo.x1 / UI.GridSize + 1;
+		int endX = gInfo.x1 / UI.GridSize + 5;
+		int startY = gInfo.y1 / UI.GridSize + 1;
+		int endY = gInfo.y1 / UI.GridSize + 3;
+		for (int i = startX; i <= endX; i += UI.GridSize)
+		{
+
+			for (int j = startY; i <= endY; i += UI.GridSize)
+			{
+				grid[i][j] = 0;
+			}
+		}
+	});
 }

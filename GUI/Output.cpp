@@ -350,11 +350,15 @@ void Output::DrawWIRE(GraphicsInfo r_GfxInfo, bool selected) const
 
 //TODO: Add similar functions to draw all components
 
-void Output::DrawConnection(GraphicsInfo gInfo, bool selected) const
+void Output::DrawConnection(GraphicsInfo gInfo, vector<AStar::Pair> pointsVector, bool selected) const
 {
 	pWind->SetBrush(RED);
 	pWind->SetPen(RED, 2);
-	pWind->DrawLine(gInfo.x1, gInfo.y1, gInfo.x2, gInfo.y2);
+	for (int i = 0; i < pointsVector.size() - 1; i++)
+	{
+		pWind->DrawLine(pointsVector[i].first * UI.GridSize, pointsVector[i].second * UI.GridSize, pointsVector[i + 1].first * UI.GridSize, pointsVector[i + 1].second * UI.GridSize);
+	}
+
 	//TODO: Add code to draw connection
 }
 
