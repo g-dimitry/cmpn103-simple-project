@@ -414,3 +414,15 @@ ApplicationManager::~ApplicationManager()
 	delete OutputInterface;
 	delete InputInterface;
 }
+
+bool ApplicationManager::inputPinHasConnection(InputPin *inputPin)
+{
+	Array<Component*> arr = this->CompList.clone();
+	arr.filter([=](Component* comp) {
+		if (Connection* conn = dynamic_cast<Connection*>(comp)) {
+			return conn->getDestPin() == inputPin;
+		}
+		return false;
+	});
+	return arr.getCount() != 0;
+}

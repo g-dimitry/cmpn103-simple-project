@@ -178,11 +178,11 @@ void Output::DrawAND2(GraphicsInfo r_GfxInfo, bool selected) const
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\active\\AND2.jpg";
+		GateImage = "Images\\components\\highlighted\\AND2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\highlighted\\AND2.jpg";
+		GateImage = "Images\\components\\active\\AND2.jpg";
 	}
 	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
@@ -191,140 +191,156 @@ void Output::DrawOR2(GraphicsInfo r_GfxInfo, bool selected) const
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\OR2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\OR2.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawNot(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\Not.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\Not.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawNAND2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\NAND2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\NAND2.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\NOR2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\NOR2.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawXOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\XOR2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\XOR2.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawXNOR2(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\XNOR2.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\XNOR2.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawAND3(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\AND3.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\AND3.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawOR3(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\OR3.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\OR3.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawXOR3(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\XOR3.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\XOR3.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawBUFFER(GraphicsInfo r_GfxInfo, bool selected) const
 {
 	string GateImage;
 	if (selected)
 	{
-		GateImage = "Images\\components\\faded\\and.png";
+		GateImage = "Images\\components\\highlighted\\BUFFER.jpg";
 	}
 	else
 	{
-		GateImage = "Images\\components\\faded\\or.png";
+		GateImage = "Images\\components\\active\\BUFFER.jpg";
 	}
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected) const
 {
-	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	string GateImage;
+	if (selected)
+	{
+		GateImage = "Images\\components\\highlighted\\SWITCH.jpg";
+	}
+	else
+	{
+		GateImage = "Images\\components\\active\\SWITCH.jpg";
+	}
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
 {
-	string GateImage = "Images\\components\\faded\\and.png";
-	pWind->DrawImage(new image(GateImage, imagetype::PNG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
+	string GateImage;
+	if (selected)
+	{
+		GateImage = "Images\\components\\highlighted\\LED.jpg";
+	}
+	else
+	{
+		GateImage = "Images\\components\\active\\LED.jpg";
+	}
+	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
 void Output::DrawWIRE(GraphicsInfo r_GfxInfo, bool selected) const
 {

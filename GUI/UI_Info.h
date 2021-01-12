@@ -41,8 +41,8 @@ __declspec(selectany) //This line to prevent "redefinition error"
 			Gate_Height = 64,							//AND2 Gate Image default height
 			LED_HEIGHT = 64,
 			SWITCH_HEIGHT = 64,
-			LED_WIDTH = 64,
-			SWITCH_WIDTH = 64;
+			LED_WIDTH = 96,
+			SWITCH_WIDTH = 96;
 } UI; //create a single global object UI
 
 #endif

@@ -74,7 +74,7 @@ public:
 	void copySelectedComponents();
 	void cutSelectedComponents();
 	void pasteClipboard(int &Cx, int &Cy, Array<Component*>* arr);
-
+	bool inputPinHasConnection(InputPin* inputPin);
 	//destructor
 	~ApplicationManager();
 }; 

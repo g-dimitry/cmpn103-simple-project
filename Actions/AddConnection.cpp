@@ -132,6 +132,7 @@ void AddConnection::Execute()
             return;
         }
         pinCount = 1;
+        pinNumber = 0;
     }
     if (pinNumber == -1)
     {
@@ -170,6 +171,9 @@ void AddConnection::Execute()
         {
             gInfo.y2 = DestComponent->getGraphicsInfo().y2 - 16;
         }
+    }
+    if (this->pManager->inputPinHasConnection(DestComponent->getInputPin(pinNumber))) {
+        return;
     }
     Connection *conn = new Connection(gInfo, SrcComp->getOutputPin(), DestComponent->getInputPin(pinNumber));
     SrcComp->getOutputPin()->ConnectTo(conn);
