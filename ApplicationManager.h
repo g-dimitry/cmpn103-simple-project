@@ -60,8 +60,11 @@ public:
 	void RemoveComponent(int ID);
 	void RemoveComponents(Array<int> arr);
 
-	bool GetComponentByID(int ID, Component* out);
-	bool ComponentCollides(Component* comp);
+	bool GetComponentByID(int ID, Component** out);
+	bool ComponentCollides(Component* comp, Component** collidedComponent = NULL);
+	bool ComponentCollides(GraphicsInfo gInfo, Component** collidedComponent = NULL);
+	int getSelectedComponentsCount();
+	void deselectAll();
 
 	//destructor
 	~ApplicationManager();

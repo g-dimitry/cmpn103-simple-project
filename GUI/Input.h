@@ -16,5 +16,6 @@ public:
 
 	ActionType GetUserAction() const; //Reads the user click and maps it to an action
 	buttonstate GetMousePosition(int& x, int& y);
+	void FlushMouse();
 	~Input();
 };

@@ -20,7 +20,7 @@ void SWITCH::Operate()
 void SWITCH::Draw(Output *pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawSWITCH(m_GfxInfo);
+	pOut->DrawSWITCH(m_GfxInfo, this->getSelected());
 }
 
 //returns status of outputpin

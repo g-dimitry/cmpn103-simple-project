@@ -71,6 +71,7 @@ void AddGate::ReadActionParameters()
         }
     } while (!shouldEndDrag);
     pOut->ClearStatusBar();
+    this->pManager->GetInput()->FlushMouse();
 }
 
 

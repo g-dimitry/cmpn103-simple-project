@@ -20,7 +20,7 @@ void LED::Operate()
 void LED::Draw(Output *pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawLED(m_GfxInfo);
+	pOut->DrawLED(m_GfxInfo, this->getSelected());
 }
 
 //returns status of outputpin

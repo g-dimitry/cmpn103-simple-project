@@ -20,7 +20,7 @@ void OR3::Operate()
 void OR3::Draw(Output *pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawOR3(m_GfxInfo);
+	pOut->DrawOR3(m_GfxInfo, this->getSelected());
 }
 
 //returns status of outputpin

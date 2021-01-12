@@ -11,7 +11,7 @@ private:
 	string m_Label;
 	int id;
 	static int ComponentCount;
-
+	bool selected = false;
 protected:
 	GraphicsInfo m_GfxInfo; //The parameters required to draw a component
 public:
@@ -19,6 +19,9 @@ public:
 	{
 		return Component::ComponentCount;
 	}
+	bool getSelected();
+	void setSelected(bool selectedValue);
+	void toggleSelect();
 	int getComponentId();
 	Component(const GraphicsInfo &r_GfxInfo);
 	Component(int id, const GraphicsInfo &r_GfxInfo);
@@ -37,6 +40,7 @@ public:
 	virtual ~Component();
 
 	bool Collides(Component* comp);
+	bool Collides(GraphicsInfo gInfo);
 };
 
 #endif

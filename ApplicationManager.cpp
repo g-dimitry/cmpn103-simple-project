@@ -1,4 +1,5 @@
 #include "./ApplicationManager.h"
+#include <iostream>
 
 ApplicationManager::ApplicationManager()
 {
@@ -12,9 +13,17 @@ void ApplicationManager::AddComponent(Component *pComp)
 	CompList.push(pComp);
 }
 ////////////////////////////////////////////////////////////////////
-bool ApplicationManager::GetComponentByID(int ID, Component *out)
+bool ApplicationManager::GetComponentByID(int ID, Component **out)
 {
-	Array<Component *> clone = CompList.clone();
+	for (int i = 0; i < CompList.getCount(); i++) {
+		if (CompList.getData()[i]->getComponentId() == ID) {
+			*out = CompList.getData()[i];
+			return true;
+		}
+	}
+	return false;
+	/*Array<Component *> clone = CompList.clone();
+
 	clone.filter([=](Component *comp) {
 		if (comp->getComponentId() == ID)
 		{
@@ -27,12 +36,12 @@ bool ApplicationManager::GetComponentByID(int ID, Component *out)
 		out = clone.getData()[0];
 		return true;
 	}
-	return false;
+	return false;*/
 }
 ////////////////////////////////////////////////////////////////////
 void ApplicationManager::RemoveComponent(int ID)
 {
-	Component *comp;
+	Component **comp;
 	if (this->GetComponentByID(ID, comp))
 	{
 		CompList.filter([=](Component *comp) {
@@ -52,7 +61,7 @@ void ApplicationManager::RemoveComponents(Array<int> arr)
 	});
 }
 ////////////////////////////////////////////////////////////////////
-bool ApplicationManager::ComponentCollides(Component *comp)
+bool ApplicationManager::ComponentCollides(Component *comp, Component** collidedComp)
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
@@ -60,6 +69,24 @@ bool ApplicationManager::ComponentCollides(Component *comp)
 	});
 	if (arr.getCount() > 0)
 	{
+		if (collidedComp) {
+			*collidedComp = arr.getData()[0];
+		}
+		return true;
+	}
+	return false;
+}
+////////////////////////////////////////////////////////////////////
+bool ApplicationManager::ComponentCollides(GraphicsInfo gInfo, Component** collidedComp)
+{
+	Array<Component *> arr = this->CompList.clone();
+	arr.filter([=](Component *comp2) {
+		bool collides = comp2->Collides(gInfo);
+		return collides;
+	});
+	if (arr.getCount() > 0)
+	{
+		this->GetComponentByID(arr.getData()[0]->getComponentId(), collidedComp);
 		return true;
 	}
 	return false;
@@ -176,8 +203,31 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 void ApplicationManager::UpdateInterface()
 {
+	this->GetOutput()->ClearDrawingArea();
 	CompList.forEach([=](Component *comp) {
 		comp->Draw(OutputInterface);
+	});
+}
+
+///////////////////////////////////////////////////////////////////
+
+int ApplicationManager::getSelectedComponentsCount()
+{
+	Array<Component *> arr = this->CompList.clone();
+	arr.filter([=](Component *comp2) {
+		return comp2->getSelected();
+	});
+
+	return arr.getCount();
+}
+
+////////////////////////////////////////////////////////////////////
+
+void ApplicationManager::deselectAll()
+{
+	cout << this->getSelectedComponentsCount();
+	this->CompList.forEach([=](Component *comp) {
+		comp->setSelected(false);
 	});
 }
 
@@ -200,3 +250,4 @@ ApplicationManager::~ApplicationManager()
 	delete OutputInterface;
 	delete InputInterface;
 }
+

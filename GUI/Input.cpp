@@ -11,7 +11,12 @@ void Input::GetPointClicked(int &x, int &y)
 	pWind->WaitMouseClick(x, y); //Wait for mouse click
 }
 
-buttonstate Input::GetMousePosition(int& x, int& y) {
+void Input::FlushMouse() {
+	pWind->FlushMouseQueue();
+}
+
+buttonstate Input::GetMousePosition(int &x, int &y)
+{
 	return pWind->GetButtonState(LEFT_BUTTON, x, y);
 }
 
@@ -34,8 +39,12 @@ ActionType Input::GetUserAction() const
 
 	if (UI.AppMode == DESIGN) //application is in design mode
 	{
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			return SELECT; //user want to select/unselect a component
+		}
 		//[1] If user clicks on the Toolbar
-		if (y >= UI.ToolBarHeight && y < UI.ToolBarHeight + UI.GateBarHeight)
+		else if (y >= UI.ToolBarHeight && y < UI.ToolBarHeight + UI.GateBarHeight)
 		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
@@ -78,10 +87,8 @@ ActionType Input::GetUserAction() const
 			}
 		}
 
-		//[2] User clicks on the drawing area
-		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
-		{
-			return SELECT; //user want to select/unselect a component
+		else if (y > UI.ToolBarHeight + UI.GateBarHeight && y < UI.height - UI.StatusBarHeight) {
+			return ActionType::SELECT;
 		}
 
 		//[3] User clicks on the status bar

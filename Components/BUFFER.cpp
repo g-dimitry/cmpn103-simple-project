@@ -20,7 +20,7 @@ void BUFFER::Operate()
 void BUFFER::Draw(Output *pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawBUFFER(m_GfxInfo);
+	pOut->DrawBUFFER(m_GfxInfo, this->getSelected());
 }
 
 //returns status of outputpin
