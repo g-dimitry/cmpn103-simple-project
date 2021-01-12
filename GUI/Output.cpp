@@ -356,7 +356,7 @@ void Output::DrawConnection(GraphicsInfo gInfo, vector<AStar::Pair> pointsVector
 	pWind->SetPen(RED, 2);
 	for (int i = 0; i < pointsVector.size() - 1; i++)
 	{
-		pWind->DrawLine(pointsVector[i].first * UI.GridSize, pointsVector[i].second * UI.GridSize, pointsVector[i + 1].first * UI.GridSize, pointsVector[i + 1].second * UI.GridSize);
+		pWind->DrawLine(pointsVector[i].second * UI.GridSize, pointsVector[i].first * UI.GridSize, pointsVector[i + 1].second * UI.GridSize, pointsVector[i + 1].first * UI.GridSize);
 	}
 
 	//TODO: Add code to draw connection

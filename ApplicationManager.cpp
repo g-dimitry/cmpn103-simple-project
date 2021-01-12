@@ -221,7 +221,7 @@ void ApplicationManager::UpdateInterface()
 		if (Connection *conn = dynamic_cast<Connection *>(comp))
 		{
 			vector<AStar::Pair> pointsVector;
-			conn->setPointsVector(AStar::getShortestPath(grid, make_pair(conn->getGraphicsInfo().x1 / UI.GridSize, conn->getGraphicsInfo().y1 / UI.GridSize), make_pair(conn->getGraphicsInfo().x2 / UI.GridSize, conn->getGraphicsInfo().y2 / UI.GridSize)));
+			conn->setPointsVector(AStar::getShortestPath(grid, make_pair(conn->getGraphicsInfo().y1 / UI.GridSize, conn->getGraphicsInfo().x1 / UI.GridSize), make_pair(conn->getGraphicsInfo().y2 / UI.GridSize, conn->getGraphicsInfo().x2 / UI.GridSize)));
 		}
 		comp->Draw(OutputInterface);
 	});
@@ -454,12 +454,11 @@ void ApplicationManager::generateGrid(int grid[][82])
 		int endX = gInfo.x1 / UI.GridSize + 5;
 		int startY = gInfo.y1 / UI.GridSize + 1;
 		int endY = gInfo.y1 / UI.GridSize + 3;
-		for (int i = startX; i <= endX; i += UI.GridSize)
+		for (int i = startX; i <= endX; i += 1)
 		{
-
-			for (int j = startY; i <= endY; i += UI.GridSize)
+			for (int j = startY; j <= endY; j += 1)
 			{
-				grid[i][j] = 0;
+				grid[j][i] = 0;
 			}
 		}
 	});
