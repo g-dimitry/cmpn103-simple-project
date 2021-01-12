@@ -37,6 +37,7 @@ bool isDestination(int row, int col, Pair dest)
 // A Utility Function to calculate the 'h' heuristics.
 double calculateHValue(int row, int col, Pair dest)
 {
+	return max(abs(row - dest.first), 10 * abs(col - dest.second));
 	// Return using the distance formula
 	return ((double)sqrt((row - dest.first) * (row - dest.first) + (col - dest.second) * (col - dest.second)));
 }

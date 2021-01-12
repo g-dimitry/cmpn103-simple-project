@@ -112,20 +112,20 @@ void Output::CreateDesignToolBar() const
 
 	//First prepare List of images for each menu item
 	string MenuItemImages[ITM_DSN_CNT];
-	MenuItemImages[ITM_AND2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_OR2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_NOT] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_NAND2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_NOR2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_XOR2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_XNOR2] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_AND3] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_OR3] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_XOR3] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_BUFFER] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_SWITCH] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_LED] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITM_WIRE] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITM_AND2] = "Images\\Menu\\gatebar\\active\\AND2.jpg";
+	MenuItemImages[ITM_OR2] = "Images\\Menu\\gatebar\\active\\OR2.jpg";
+	MenuItemImages[ITM_NOT] = "Images\\Menu\\gatebar\\active\\NOT.jpg";
+	MenuItemImages[ITM_NAND2] = "Images\\Menu\\gatebar\\active\\NAND2.jpg";
+	MenuItemImages[ITM_NOR2] = "Images\\Menu\\gatebar\\active\\NOR2.jpg";
+	MenuItemImages[ITM_XOR2] = "Images\\Menu\\gatebar\\active\\XOR2.jpg";
+	MenuItemImages[ITM_XNOR2] = "Images\\Menu\\gatebar\\active\\XNOR2.jpg";
+	MenuItemImages[ITM_AND3] = "Images\\Menu\\gatebar\\active\\AND3.jpg";
+	MenuItemImages[ITM_OR3] = "Images\\Menu\\gatebar\\active\\OR3.jpg";
+	MenuItemImages[ITM_XOR3] = "Images\\Menu\\gatebar\\active\\XOR3.jpg";
+	MenuItemImages[ITM_BUFFER] = "Images\\Menu\\gatebar\\active\\BUFFER.jpg";
+	MenuItemImages[ITM_SWITCH] = "Images\\Menu\\gatebar\\active\\SWITCH.jpg";
+	MenuItemImages[ITM_LED] = "Images\\Menu\\gatebar\\active\\LED.jpg";
+	MenuItemImages[ITM_WIRE] = "Images\\Menu\\gatebar\\active\\WIRE.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
 	pWind->SetBrush(UI.BkGrndColor);
