@@ -137,3 +137,7 @@ ActionType Input::GetUserAction() const
 Input::~Input()
 {
 }
+
+void Input::WaitMouseClick(int &x, int&y) {
+	pWind->WaitMouseClick(x, y);
+}

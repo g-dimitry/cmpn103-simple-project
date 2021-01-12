@@ -1,8 +1,12 @@
 #pragma once
 #include "./Component.h"
+#include "./InputPin.h"
+#include "./OutputPin.h"
 
 class LED : public Component
 {
+private:
+	InputPin inputPin;
 public:
 	LED(const GraphicsInfo &r_GfxInfo);
 	virtual void Operate();					 //Calculates the output of the AND gate
@@ -13,4 +17,6 @@ public:
 
 	virtual void setInputPinStatus(int n, STATUS s); //set status of Inputpin # n, to be used by connection class.
 	virtual LED* clone();
+	virtual InputPin* getInputPin(int n);
+	virtual OutputPin* getOutputPin();
 };

@@ -26,7 +26,7 @@ Gate::Gate(int r_Inputs, int r_FanOut) : m_OutputPin(r_FanOut)
 		m_InputPins[i].setComponent(this);
 }
 
-Gate* Gate::gateFactory(ActionType actionType, GraphicsInfo gInfo, int fanout = 5)
+Gate *Gate::gateFactory(ActionType actionType, GraphicsInfo gInfo, int fanout = 5)
 {
 	switch (actionType)
 	{
@@ -66,4 +66,18 @@ Gate* Gate::gateFactory(ActionType actionType, GraphicsInfo gInfo, int fanout = 
 	default:
 		return NULL;
 	}
+}
+
+int Gate::getInputsCount()
+{
+	return this->m_Inputs;
+}
+
+InputPin *Gate::getInputPin(int n)
+{
+	return &(this->m_InputPins[n]);
+}
+OutputPin *Gate::getOutputPin()
+{
+	return &(this->m_OutputPin);
 }

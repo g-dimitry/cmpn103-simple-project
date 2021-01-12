@@ -1,6 +1,6 @@
 #include "./SWITCH.h"
 
-SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo) : Component(r_GfxInfo)
+SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo): outPin(5) , Component(r_GfxInfo)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -42,4 +42,13 @@ void SWITCH::setInputPinStatus(int n, STATUS s)
 
 SWITCH* SWITCH::clone() {
 	return new SWITCH(this->m_GfxInfo);
+}
+
+InputPin *SWITCH::getInputPin(int n)
+{
+	return NULL;
+}
+OutputPin *SWITCH::getOutputPin()
+{
+	return &(this->outPin);
 }

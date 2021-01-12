@@ -19,5 +19,8 @@ protected:
 public:
   Gate(int r_Inputs, int r_FanOut);
   static Gate* gateFactory(ActionType actionType,GraphicsInfo gInfo, int fanout);
+  int getInputsCount();
+  virtual InputPin* getInputPin(int n);
+	virtual OutputPin* getOutputPin();
 };
 

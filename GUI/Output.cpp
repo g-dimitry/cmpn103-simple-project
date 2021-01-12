@@ -334,8 +334,11 @@ void Output::DrawWIRE(GraphicsInfo r_GfxInfo, bool selected) const
 
 //TODO: Add similar functions to draw all components
 
-void Output::DrawConnection(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawConnection(GraphicsInfo gInfo, bool selected) const
 {
+	pWind->SetBrush(RED);
+	pWind->SetPen(RED, 2);
+	pWind->DrawLine(gInfo.x1, gInfo.y1, gInfo.x2, gInfo.y2);
 	//TODO: Add code to draw connection
 }
 

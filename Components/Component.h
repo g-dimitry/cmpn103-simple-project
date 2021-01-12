@@ -3,6 +3,8 @@
 
 #include "../Defs.h"
 #include "../GUI/Output.h"
+#include "./InputPin.h"
+#include "./OutputPin.h"
 
 //Base class for classes Gate, Switch, and LED.
 class Component
@@ -44,6 +46,8 @@ public:
 	bool Collides(Component* comp);
 	bool Collides(GraphicsInfo gInfo);
 	virtual Component* clone () = 0;
+	virtual InputPin* getInputPin(int n) = 0;
+	virtual OutputPin* getOutputPin() = 0;
 };
 
 #endif

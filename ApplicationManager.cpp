@@ -1,4 +1,5 @@
 #include "./ApplicationManager.h"
+#include "./Actions/AddConnection.h"
 #include <iostream>
 
 ApplicationManager::ApplicationManager()
@@ -197,12 +198,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case PASTE:
 		pAct = new Paste(this);
 		break;
+	case ADD_CONNECTION:
+		pAct = new AddConnection(this);
+		break;
 	}
 
-	// case ADD_CONNECTION:
-	// 	pAct = new AddANDgate2(this);
-	// 	break;
-	// }
 	if (pAct)
 	{
 		pAct->Execute();
@@ -234,7 +234,7 @@ int ApplicationManager::getSelectedComponentsCount()
 
 ///////////////////////////////////////////////////////////////////
 
-int ApplicationManager::getClipboardCount ()
+int ApplicationManager::getClipboardCount()
 {
 	return this->Clipboard.getCount();
 }
@@ -290,7 +290,7 @@ void ApplicationManager::cutSelectedComponents()
 
 ////////////////////////////////////////////////////////////////////
 
-void ApplicationManager::pasteClipboard(int &x, int &y, Array<Component*>* arr)
+void ApplicationManager::pasteClipboard(int &x, int &y, Array<Component *> *arr)
 {
 	int x1 = 9999, x2 = 0, y1 = 99999, y2 = 0; // x1 -> smallest x , x2 -> largest x
 	this->Clipboard.forEach([&](Component *comp) {
@@ -347,9 +347,9 @@ void ApplicationManager::pasteClipboard(int &x, int &y, Array<Component*>* arr)
 		Cy = min(UI.height - Wdth / 2 - UI.StatusBarHeight, max(Wdth / 2 + UI.ToolBarHeight, roundf((float)Cy / UI.GridSize) * UI.GridSize));
 
 		bool anyComponentCollides = false;
-		arr->filter([](Component* comp) {return false; });
+		arr->filter([](Component *comp) { return false; });
 		this->Clipboard.forEach([&](Component *comp) {
-			Component* tmp = comp->clone();
+			Component *tmp = comp->clone();
 			GraphicsInfo GInfo;
 			GInfo.x1 = Cx + comp->getGraphicsInfo().x1;
 			GInfo.x2 = Cx + comp->getGraphicsInfo().x2;

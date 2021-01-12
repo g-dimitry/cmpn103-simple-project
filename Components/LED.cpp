@@ -40,6 +40,16 @@ void LED::setInputPinStatus(int n, STATUS s)
 {
 }
 
-LED* LED::clone() {
+LED *LED::clone()
+{
 	return new LED(this->m_GfxInfo);
+}
+
+InputPin *LED::getInputPin(int n)
+{
+	return &(this->inputPin);
+}
+OutputPin *LED::getOutputPin()
+{
+	return NULL;
 }

@@ -51,3 +51,13 @@ void Connection::setInputPinStatus(int n, STATUS s)
 {
 	SrcPin->setStatus(s);
 }
+
+Connection * Connection::clone() {
+	return NULL;
+}
+InputPin * Connection::getInputPin(int n) {
+	return NULL;
+}
+OutputPin * Connection::getOutputPin() {
+	return NULL;
+}
