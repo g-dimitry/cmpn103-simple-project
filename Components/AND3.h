@@ -5,6 +5,7 @@ class AND3 : public Gate
 {
 public:
 	AND3(const GraphicsInfo &r_GfxInfo, int r_FanOut);
+	AND3(const GraphicsInfo &r_GfxInfo, int r_FanOut, int id);
 	virtual void Operate();					 //Calculates the output of the AND gate
 	virtual void Draw(Output *pOut); //Draws 2-input gate
 

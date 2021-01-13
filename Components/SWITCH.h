@@ -16,6 +16,7 @@ private:
 
 public:
 	SWITCH(const GraphicsInfo &r_GfxInfo);
+	SWITCH(const GraphicsInfo &r_GfxInfo, int id);
 	virtual void Operate();			 //Calculates the output of the AND gate
 	virtual void Draw(Output *pOut); //Draws 2-input gate
 

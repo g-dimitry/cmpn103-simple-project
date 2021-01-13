@@ -7,6 +7,14 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin, InputP
 	DstPin = pDstPin;
 	this->setLabel("WIRE");
 }
+
+Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin, InputPin *pDstPin, int id) : Component(id, r_GfxInfo)
+
+{
+	SrcPin = pSrcPin;
+	DstPin = pDstPin;
+	this->setLabel("WIRE");
+}
 void Connection::setSourcePin(OutputPin *pSrcPin)
 {
 	SrcPin = pSrcPin;

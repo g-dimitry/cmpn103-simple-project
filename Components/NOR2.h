@@ -5,6 +5,7 @@ class NOR2 : public Gate
 {
 public:
 	NOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut);
+	NOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut, int id);
 	virtual void Operate();					 //Calculates the output of the AND gate
 	virtual void Draw(Output *pOut); //Draws 2-input gate
 

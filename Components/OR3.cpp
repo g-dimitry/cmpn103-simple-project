@@ -9,6 +9,15 @@ OR3::OR3(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(3, r_FanOut)
 	this->setLabel("OR3");
 }
 
+OR3::OR3(const GraphicsInfo &r_GfxInfo, int r_FanOut, int id) : Gate(3, r_FanOut)
+{
+	m_GfxInfo.x1 = r_GfxInfo.x1;
+	m_GfxInfo.y1 = r_GfxInfo.y1;
+	m_GfxInfo.x2 = r_GfxInfo.x2;
+	m_GfxInfo.y2 = r_GfxInfo.y2;
+	this->setLabel("OR3");
+}
+
 void OR3::Operate()
 {
 	STATUS status = STATUS::LOW;

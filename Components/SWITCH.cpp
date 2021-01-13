@@ -9,6 +9,15 @@ SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo) : outPin(5), Component(r_GfxInfo)
 	this->setLabel("SWITCH");
 }
 
+SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo, int id) : outPin(5), Component(id, r_GfxInfo)
+{
+	m_GfxInfo.x1 = r_GfxInfo.x1;
+	m_GfxInfo.y1 = r_GfxInfo.y1;
+	m_GfxInfo.x2 = r_GfxInfo.x2;
+	m_GfxInfo.y2 = r_GfxInfo.y2;
+	this->setLabel("SWITCH");
+}
+
 void SWITCH::Operate()
 {
 	this->outPin.setStatus(this->status);

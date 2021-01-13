@@ -9,6 +9,7 @@ private:
 	InputPin inputPin;
 public:
 	LED(const GraphicsInfo &r_GfxInfo);
+	LED(const GraphicsInfo &r_GfxInfo, int id);
 	virtual void Operate();					 //Calculates the output of the AND gate
 	virtual void Draw(Output *pOut); //Draws 2-input gate
 

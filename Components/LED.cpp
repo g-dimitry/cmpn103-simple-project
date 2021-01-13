@@ -10,6 +10,16 @@ LED::LED(const GraphicsInfo &r_GfxInfo) : Component(r_GfxInfo)
 	this->inputPin.setComponent(this); 
 }
 
+LED::LED(const GraphicsInfo &r_GfxInfo, int id) : Component(id, r_GfxInfo)
+{
+	m_GfxInfo.x1 = r_GfxInfo.x1;
+	m_GfxInfo.y1 = r_GfxInfo.y1;
+	m_GfxInfo.x2 = r_GfxInfo.x2;
+	m_GfxInfo.y2 = r_GfxInfo.y2;
+	this->setLabel("LED");
+	this->inputPin.setComponent(this); 
+}
+
 void LED::Operate()
 {
 	//caclulate the output status as the ANDing of the two input pins

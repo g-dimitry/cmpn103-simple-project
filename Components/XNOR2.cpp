@@ -9,6 +9,15 @@ XNOR2::XNOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 	this->setLabel("XNOR2");
 }
 
+XNOR2::XNOR2(const GraphicsInfo &r_GfxInfo, int r_FanOut, int id) : Gate(2, r_FanOut, id)
+{
+	m_GfxInfo.x1 = r_GfxInfo.x1;
+	m_GfxInfo.y1 = r_GfxInfo.y1;
+	m_GfxInfo.x2 = r_GfxInfo.x2;
+	m_GfxInfo.y2 = r_GfxInfo.y2;
+	this->setLabel("XNOR2");
+}
+
 void XNOR2::Operate()
 {
 	STATUS status = STATUS::LOW;
