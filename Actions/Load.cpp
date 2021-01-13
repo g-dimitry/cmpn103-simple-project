@@ -19,6 +19,7 @@ void Load::ReadActionParameters()
 
 void Load::Execute()
 {
+    this->pManager->getCompList()->filter([&](Component *comp) { return false; });
     in.open("circ.txt");
     int compType;
     Array<ConnectionData> connData;

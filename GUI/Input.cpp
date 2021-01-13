@@ -151,6 +151,15 @@ ActionType Input::GetUserAction() const
 	}
 	else //Application is in Simulation mode
 	{
+		if (y > 0 && y < UI.ToolBarHeight) {
+			int ClickedItemOrder = (x / UI.ToolBarItemWidth);
+			if (ClickedItemOrder == ToolBarItem::ITEM_PAUSE)
+			{
+				return ActionType::DSN_MODE;
+			} else if (ClickedItemOrder == ToolBarItem::ITEM_EXIT) {
+				return ActionType::EXIT;
+			}
+		}
 		return Change_Switch;
 	}
 }
