@@ -79,24 +79,24 @@ void Output::PrintMsg(string msg) const
 {
 	ClearStatusBar(); //Clear Status bar to print message on it
 	// Set the Message offset from the Status Bar
-	int MsgX = 25;
-	int MsgY = UI.StatusBarHeight - 10;
+	int MsgX = 16;
+	int MsgY = UI.StatusBarHeight - 8;
 
 	// Print the Message
-	pWind->SetFont(20, BOLD | ITALICIZED, BY_NAME, "Arial");
-	pWind->SetPen(UI.MsgColor);
+	pWind->SetFont(16, BOLD, BY_NAME, "Arial");
+	pWind->SetPen(UI.primary);
 	pWind->DrawString(MsgX, UI.height - MsgY, msg);
 }
 //////////////////////////////////////////////////////////////////////////////////
 void Output::ClearStatusBar() const
 {
 	// Set the Message offset from the Status Bar
-	int MsgX = 25;
-	int MsgY = UI.StatusBarHeight - 10;
+	int MsgX = 16;
+	int MsgY = UI.StatusBarHeight - 8;
 
 	//Overwrite using bachground color to erase the message
-	pWind->SetPen(UI.BkGrndColor);
-	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(UI.surface);
+	pWind->SetBrush(UI.surface);
 	pWind->DrawRectangle(MsgX, UI.height - MsgY, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -16,7 +16,7 @@ __declspec(selectany) //This line to prevent "redefinition error"
 
 	static const int  GridSize = 16, widthError = 14, heightError = 15, width = 80 * GridSize, height = 45 * GridSize, //Window width and height
 		wx = 0, wy = 0,												 //Window starting coordinates
-		StatusBarHeight = 48,										 //Status Bar Height
+		StatusBarHeight = 32,										 //Status Bar Height
 		ToolBarHeight = 32,											 //Tool Bar Height (distance from top of window to bottom line of toolbar)
 		ToolBarItemWidth = 32,											 //Width of each item in toolbar menu
 		GateBarHeight = 32,
