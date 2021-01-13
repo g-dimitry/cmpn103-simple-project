@@ -85,10 +85,6 @@ ActionType Input::GetUserAction() const
 				return ActionType::CUT;
 			case ITEM_PASTE:
 				return ActionType::PASTE;
-			case ITEM_UNDO:
-				return ActionType::UNDO;
-			case ITEM_REDO:
-				return ActionType::REDO;
 			case ITEM_PLAY:
 				return ActionType::SIM_MODE;
 			case ITEM_PAUSE:

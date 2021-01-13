@@ -34,6 +34,7 @@ __declspec(selectany) //This line to prevent "redefinition error"
 	color error;
 	color high;
 	color low;
+	color primary;
 
 	//This should be calculated accurately because it will be used later to create connections between gates
 	//For now, we will assume that rect width = 50 and height = 50

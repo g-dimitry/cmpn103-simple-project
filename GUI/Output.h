@@ -15,7 +15,7 @@ public:
 	void CreateDesignToolBar() const;			//Tool bar of the design mode
 	void CreateSimulationToolBar() const; //Tool bar of the simulation mode
 	void CreateStatusBar() const;					//Create Status bar
-	void CreateGrid() const;
+	// void CreateGrid() const;
 
 	void ClearStatusBar() const;	 //Clears the status bar
 	void ClearDrawingArea() const; //Clears the drawing area

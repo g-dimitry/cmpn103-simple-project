@@ -13,10 +13,15 @@ Output::Output()
 	UI.MsgColor = BLUE;
 	UI.BkGrndColor = WHITE;
 
+	UI.background = color(242,242,242);
+	UI.surface = WHITE;
+	UI.primary = color(77,77,255);
+
 	//Create the drawing window
 	pWind = CreateWind(UI.width + UI.widthError, UI.height + UI.heightError, UI.wx, UI.wy);
 	ChangeTitle("Programming Techniques Project");
-	CreateGrid();
+	// CreateGrid();
+	ClearDrawingArea();
 	CreateToolBar();	   //Create the desgin toolbar
 	CreateDesignToolBar(); //Create the desgin toolbar
 	CreateStatusBar();	   //Create Status bar
@@ -43,30 +48,30 @@ void Output::ChangeTitle(string Title) const
 	pWind->ChangeTitle(Title);
 }
 //////////////////////////////////////////////////////////////////////////////////
-void Output::CreateGrid() const
-{
-	pWind->SetBrush(color(223, 223, 223));
-	pWind->SetPen(color(223, 223, 223), 2);
-	int rows = UI.height / UI.GridSize + 1;
-	int cols = UI.width / UI.GridSize + 1;
-	for (int i = 0; i < max(rows, cols); i++)
-	{
-		if (i <= rows && i >= 0)
-		{
-			pWind->DrawRectangle(0, i * UI.GridSize - 1, UI.width, i * UI.GridSize + 1);
-		}
-		if (i <= cols && i >= 0)
-		{
-			pWind->DrawRectangle(i * UI.GridSize - 1, 0, i * UI.GridSize + 1, UI.height);
-		}
-	}
-}
+// void Output::CreateGrid() const
+// {
+// 	pWind->SetBrush(color(223, 223, 223));
+// 	pWind->SetPen(color(223, 223, 223), 2);
+// 	int rows = UI.height / UI.GridSize + 1;
+// 	int cols = UI.width / UI.GridSize + 1;
+// 	for (int i = 0; i < max(rows, cols); i++)
+// 	{
+// 		if (i <= rows && i >= 0)
+// 		{
+// 			pWind->DrawRectangle(0, i * UI.GridSize - 1, UI.width, i * UI.GridSize + 1);
+// 		}
+// 		if (i <= cols && i >= 0)
+// 		{
+// 			pWind->DrawRectangle(i * UI.GridSize - 1, 0, i * UI.GridSize + 1, UI.height);
+// 		}
+// 	}
+// }
 void Output::CreateStatusBar() const
 {
-	pWind->SetPen(UI.BkGrndColor);
-	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetPen(UI.surface);
+	pWind->SetBrush(UI.surface);
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(BLACK, 1);
 	pWind->DrawLine(0, UI.height - UI.StatusBarHeight, UI.width, UI.height - UI.StatusBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////
@@ -98,8 +103,7 @@ void Output::ClearStatusBar() const
 //Clears the drawing (degin) area
 void Output::ClearDrawingArea() const
 {
-	pWind->SetPen(RED, 1);
-	pWind->SetBrush(WHITE);
+	pWind->SetBrush(UI.background);
 	pWind->DrawRectangle(0, UI.ToolBarHeight + UI.GateBarHeight, UI.width, UI.height - UI.StatusBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -128,7 +132,7 @@ void Output::CreateDesignToolBar() const
 	MenuItemImages[ITM_WIRE] = "Images\\Menu\\gatebar\\active\\WIRE.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
-	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetBrush(UI.background);
 	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight + UI.GateBarHeight);
 
 	//Draw menu item one image at a time
@@ -138,22 +142,19 @@ void Output::CreateDesignToolBar() const
 void Output::CreateToolBar() const
 {
 	string MenuItemImages[TOOL_BAR_ITEM_COUNT];
-	MenuItemImages[ITEM_EDIT] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_DELETE] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_COPY] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_CUT] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_PASTE] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_UNDO] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_REDO] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_PLAY] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_PAUSE] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_TRUTHTABLE] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_SAVE] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_LOAD] = "images\\Menu\\Menu_AND2.jpg";
-	MenuItemImages[ITEM_EXIT] = "images\\Menu\\Menu_AND2.jpg";
+	MenuItemImages[ITEM_EDIT] = "Images\\Menu\\toolbar\\active\\Edit.jpg";
+	MenuItemImages[ITEM_DELETE] = "Images\\Menu\\toolbar\\active\\Delete.jpg";
+	MenuItemImages[ITEM_COPY] = "Images\\Menu\\toolbar\\active\\Copy.jpg";
+	MenuItemImages[ITEM_CUT] = "Images\\Menu\\toolbar\\active\\Cut.jpg";
+	MenuItemImages[ITEM_PASTE] = "Images\\Menu\\toolbar\\active\\Paste.jpg";
+	MenuItemImages[ITEM_PLAY] = "Images\\Menu\\toolbar\\active\\Play.jpg";
+	MenuItemImages[ITEM_PAUSE] = "Images\\Menu\\toolbar\\active\\Pause.jpg";
+	MenuItemImages[ITEM_SAVE] = "Images\\Menu\\toolbar\\active\\Save.jpg";
+	MenuItemImages[ITEM_LOAD] = "Images\\Menu\\toolbar\\active\\Load.jpg";
+	MenuItemImages[ITEM_EXIT] = "Images\\Menu\\toolbar\\active\\Exit.jpg";
 
 	//TODO: Prepare image for each menu item and add it to the list
-	pWind->SetBrush(UI.BkGrndColor);
+	pWind->SetBrush(UI.primary);
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 
 	//Draw menu item one image at a time

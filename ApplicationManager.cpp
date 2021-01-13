@@ -407,7 +407,7 @@ void ApplicationManager::pasteClipboard(int &x, int &y, Array<Component *> *arr)
 		x = Cx;
 		y = Cy;
 		pOut->StartBuffer();
-		this->GetOutput()->CreateGrid();
+		// this->GetOutput()->CreateGrid();
 		this->UpdateInterface();
 
 		int Len = boundryWidth;

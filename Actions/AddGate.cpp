@@ -28,7 +28,7 @@ void AddGate::ReadActionParameters()
     {
         buttonstate state = pIn->GetMousePosition(Cx, Cy);
         pOut->StartBuffer();
-        this->pManager->GetOutput()->CreateGrid();
+        // this->pManager->GetOutput()->CreateGrid();
         this->pManager->UpdateInterface();
 
         int Len = this->width;
