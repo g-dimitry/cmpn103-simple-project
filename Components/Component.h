@@ -43,11 +43,14 @@ public:
 	//Destructor must be virtual
 	virtual ~Component();
 
-	bool Collides(Component* comp);
-	bool Collides(GraphicsInfo gInfo);
+	virtual bool Collides(Component* comp);
+	virtual bool Collides(GraphicsInfo gInfo);
 	virtual Component* clone () = 0;
 	virtual InputPin* getInputPin(int n) = 0;
 	virtual OutputPin* getOutputPin() = 0;
+
+	static bool isPointInsideRect(int x, int y, GraphicsInfo g);
+	static bool isPointInsideRect(int x, int y, int x1, int y1, int x2, int y2);
 };
 
 #endif

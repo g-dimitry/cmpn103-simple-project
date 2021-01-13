@@ -64,11 +64,11 @@ void ApplicationManager::RemoveComponents(Array<int> arr)
 	});
 }
 ////////////////////////////////////////////////////////////////////
-bool ApplicationManager::ComponentCollides(Component *comp, Component **collidedComp)
+bool ApplicationManager::ComponentCollides(Component *comp, Component **collidedComp, bool includeConnections)
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
-		if (dynamic_cast<Connection*>(comp2)) {
+		if (!includeConnections && dynamic_cast<Connection*>(comp2)) {
 			return false;
 		}
 		return comp->Collides(comp2);
@@ -84,10 +84,13 @@ bool ApplicationManager::ComponentCollides(Component *comp, Component **collided
 	return false;
 }
 ////////////////////////////////////////////////////////////////////
-bool ApplicationManager::ComponentCollides(GraphicsInfo gInfo, Component **collidedComp)
+bool ApplicationManager::ComponentCollides(GraphicsInfo gInfo, Component **collidedComp, bool includeConnections)
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
+		if (!includeConnections && dynamic_cast<Connection*>(comp2)) {
+			return false;
+		}
 		bool collides = comp2->Collides(gInfo);
 		return collides;
 	});
@@ -272,12 +275,11 @@ void ApplicationManager::copySelectedComponents()
 {
 	this->Clipboard.filter([=](Component *comp) { return false; });
 	this->CompList.forEach([=](Component *comp) {
-		if (comp->getSelected())
+		if (!dynamic_cast<Connection*>(comp) && comp->getSelected())
 		{
 			this->PushToClipboard(comp->clone());
 		}
 	});
-	// aaa
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -287,7 +289,7 @@ void ApplicationManager::cutSelectedComponents()
 	Array<int> IDSArray;
 	this->Clipboard.filter([=](Component *comp) { return false; });
 	this->CompList.forEach([&](Component *comp) {
-		if (comp->getSelected())
+		if (!dynamic_cast<Connection*>(comp) && comp->getSelected())
 		{
 			this->PushToClipboard(comp->clone());
 			IDSArray.push(comp->getComponentId());

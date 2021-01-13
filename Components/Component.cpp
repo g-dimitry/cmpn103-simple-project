@@ -43,7 +43,7 @@ Component::~Component()
 {
 }
 
-bool isPointInsideRect(int x, int y, GraphicsInfo g)
+bool Component::isPointInsideRect(int x, int y, GraphicsInfo g)
 {
 	if (x >= g.x1 && x <= g.x2 && y >= g.y1 && y <= g.y2)
 	{
@@ -52,7 +52,7 @@ bool isPointInsideRect(int x, int y, GraphicsInfo g)
 	return false;
 }
 
-bool isPointInsideRect(int x, int y, int x1, int y1, int x2, int y2)
+bool Component::isPointInsideRect(int x, int y, int x1, int y1, int x2, int y2)
 {
 	if (x >= x1 && x <= x2 && y >= y1 && y <= y2)
 	{

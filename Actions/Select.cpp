@@ -30,7 +30,8 @@ void Select::Execute()
     Component* collidedComponent = NULL;
     bool doesCollide = this->pManager->ComponentCollides(
     	gInfo,
-    	&collidedComponent
+    	&collidedComponent,
+        true
     );
     if (doesCollide) {
     	collidedComponent->toggleSelect();

@@ -69,3 +69,43 @@ OutputPin *Connection::getOutputPin()
 {
 	return NULL;
 }
+bool Connection::Collides(Component *comp)
+{
+	bool doesCollide = false;
+	for (int i = 0; i < this->pointsVector.size() - 1; i++) {
+		int x1 = (this->pointsVector[i].second) * UI.GridSize;
+		int y1 = (this->pointsVector[i].first) * UI.GridSize - 4;
+		int x2 = (this->pointsVector[i + 1].second) * UI.GridSize;
+		int y2 = (this->pointsVector[i + 1].first) * UI.GridSize + 4;
+		doesCollide = isPointInsideRect(x1, y1, comp->getGraphicsInfo())
+		|| isPointInsideRect(x1, y2, comp->getGraphicsInfo())
+		|| isPointInsideRect(x2, y1, comp->getGraphicsInfo())
+		|| isPointInsideRect(x2, y2, comp->getGraphicsInfo())
+		|| isPointInsideRect(comp->getGraphicsInfo().x1, comp->getGraphicsInfo().y1, x1, y1, x2, y2)
+		|| isPointInsideRect(comp->getGraphicsInfo().x1, comp->getGraphicsInfo().y2, x1, y1, x2, y2)
+		|| isPointInsideRect(comp->getGraphicsInfo().x2, comp->getGraphicsInfo().y1, x1, y1, x2, y2)
+		|| isPointInsideRect(comp->getGraphicsInfo().x2, comp->getGraphicsInfo().y2, x1, y1, x2, y2);
+		break;
+	}
+	return doesCollide;
+}
+bool Connection::Collides(GraphicsInfo gInfo)
+{
+	bool doesCollide = false;
+	for (int i = 0; i < this->pointsVector.size() - 1; i++) {
+		int x1 = (this->pointsVector[i].second) * UI.GridSize;
+		int y1 = (this->pointsVector[i].first) * UI.GridSize - 4;
+		int x2 = (this->pointsVector[i + 1].second) * UI.GridSize;
+		int y2 = (this->pointsVector[i + 1].first) * UI.GridSize + 4;
+		doesCollide = isPointInsideRect(x1, y1, gInfo)
+		|| isPointInsideRect(x1, y2, gInfo)
+		|| isPointInsideRect(x2, y1, gInfo)
+		|| isPointInsideRect(x2, y2, gInfo)
+		|| isPointInsideRect(gInfo.x1, gInfo.y1, x1, y1, x2, y2)
+		|| isPointInsideRect(gInfo.x1, gInfo.y2, x1, y1, x2, y2)
+		|| isPointInsideRect(gInfo.x2, gInfo.y1, x1, y1, x2, y2)
+		|| isPointInsideRect(gInfo.x2, gInfo.y2, x1, y1, x2, y2);
+		break;
+	}
+	return doesCollide;
+}

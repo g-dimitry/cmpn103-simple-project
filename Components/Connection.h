@@ -34,4 +34,7 @@ public:
 	virtual InputPin *getInputPin(int n);
 	virtual OutputPin *getOutputPin();
 
+	bool Collides(Component* comp);
+	bool Collides(GraphicsInfo gInfo);
+
 };

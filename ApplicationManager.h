@@ -68,16 +68,16 @@ public:
 	void PushToClipboard(Component* comp);
 
 	bool GetComponentByID(int ID, Component** out);
-	bool ComponentCollides(Component* comp, Component** collidedComponent = NULL);
-	bool ComponentCollides(GraphicsInfo gInfo, Component** collidedComponent = NULL);
+	bool ComponentCollides(Component* comp, Component** collidedComponent = NULL, bool includeConnections = false);
+	bool ComponentCollides(GraphicsInfo gInfo, Component** collidedComponent = NULL, bool includeConnections = false);
 	int getSelectedComponentsCount();
 	int getClipboardCount();
 	void deselectAll();
 	void copySelectedComponents();
 	void cutSelectedComponents();
 	void pasteClipboard(int &Cx, int &Cy, Array<Component*>* arr);
-	bool inputPinHasConnection(InputPin* inputPin);
 	void generateGrid(int grid[][82]);
+	bool inputPinHasConnection(InputPin* inputPin);
 	//destructor
 	~ApplicationManager();
 }; 
