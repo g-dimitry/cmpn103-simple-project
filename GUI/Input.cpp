@@ -11,7 +11,8 @@ void Input::GetPointClicked(int &x, int &y)
 	pWind->WaitMouseClick(x, y); //Wait for mouse click
 }
 
-void Input::FlushMouse() {
+void Input::FlushMouse()
+{
 	pWind->FlushMouseQueue();
 }
 
@@ -20,15 +21,41 @@ buttonstate Input::GetMousePosition(int &x, int &y)
 	return pWind->GetButtonState(LEFT_BUTTON, x, y);
 }
 
-string Input::GetSrting(Output *pOut)
+string Input::GetSrting(Output *pOut, string initialString)
 {
-	///TODO: Implement this Function
-	//Read a complete string from the user until the user presses "ENTER".
-	//If the user presses "ESCAPE". This function should return an empty string.
-	//"BACKSPACE" should be also supported
-	//User should see what he is typing at the status bar
+	const int ESCAPE = 27;
+	const int ENTER = 13;
+	const int BACKSPACE = 8;
+	string str = initialString;
+	char key;
 
-	return NULL;
+	pWind->FlushKeyQueue();
+	pOut->PrintMsg("Editing Label: " + str);
+	do
+	{
+		pWind->WaitKeyPress(key);
+		if (key == BACKSPACE)
+		{
+			if (!str.empty())
+			{
+				str.pop_back();
+			}
+		}
+		else if (key == ESCAPE)
+		{
+			str.clear();
+		}
+		else if (key == ENTER)
+		{
+		}
+		else
+		{
+			str.push_back(key);
+		}
+		pOut->PrintMsg("Editing Label: " + str);
+	} while (key != ESCAPE && key != ENTER);
+	pOut->ClearStatusBar();
+	return str;
 }
 
 //This function reads the position where the user clicks to determine the desired action
@@ -121,7 +148,8 @@ ActionType Input::GetUserAction() const
 			}
 		}
 
-		else if (y > UI.ToolBarHeight + UI.GateBarHeight && y < UI.height - UI.StatusBarHeight) {
+		else if (y > UI.ToolBarHeight + UI.GateBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
 			return ActionType::SELECT;
 		}
 
@@ -138,6 +166,7 @@ Input::~Input()
 {
 }
 
-void Input::WaitMouseClick(int &x, int&y) {
+void Input::WaitMouseClick(int &x, int &y)
+{
 	pWind->WaitMouseClick(x, y);
 }
