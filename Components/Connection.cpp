@@ -5,6 +5,7 @@ Connection::Connection(const GraphicsInfo &r_GfxInfo, OutputPin *pSrcPin, InputP
 {
 	SrcPin = pSrcPin;
 	DstPin = pDstPin;
+	this->setLabel("WIRE");
 }
 void Connection::setSourcePin(OutputPin *pSrcPin)
 {

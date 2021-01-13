@@ -51,6 +51,8 @@ public:
 
 	static bool isPointInsideRect(int x, int y, GraphicsInfo g);
 	static bool isPointInsideRect(int x, int y, int x1, int y1, int x2, int y2);
+	string getLabel();
+	virtual void setLabel(string label);
 };
 
 #endif

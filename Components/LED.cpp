@@ -6,6 +6,7 @@ LED::LED(const GraphicsInfo &r_GfxInfo) : Component(r_GfxInfo)
 	m_GfxInfo.y1 = r_GfxInfo.y1;
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
+	this->setLabel("LED");
 }
 
 void LED::Operate()

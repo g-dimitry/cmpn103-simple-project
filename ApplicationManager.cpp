@@ -114,6 +114,7 @@ ActionType ApplicationManager::GetUserAction()
 
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
+	this->GetOutput()->ClearStatusBar();
 	Action *pAct = NULL;
 	switch (ActType)
 	{

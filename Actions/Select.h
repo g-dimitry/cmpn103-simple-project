@@ -1,6 +1,8 @@
 #pragma once
 #include "./action.h"
 #include "../Defs.H"
+#include "../Components/Component.h"
+
 class ApplicationManager;
 
 class Select : public Action

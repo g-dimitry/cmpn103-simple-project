@@ -75,7 +75,7 @@ public:
        this->data = outArr;
        return this;
    }
-   void filter(function<bool(Type)> f)
+   Array<Type>* filter(function<bool(Type)> f)
    {
       Array<Type> *out = new Array<Type>();
       for (int i = 0; i < count; i++)
@@ -90,6 +90,7 @@ public:
       this->data = new Type[out->getCount()];
       out->copy(this->data);
       delete out;
+      return this;
    }
    void forEach(function<void(Type)> f)
    {

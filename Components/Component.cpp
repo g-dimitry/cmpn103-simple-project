@@ -94,3 +94,13 @@ void Component::setGraphicsInfo(GraphicsInfo gInfo)
 {
 	this->m_GfxInfo = gInfo;
 }
+
+string Component::getLabel()
+{
+	return this->m_Label;
+}
+
+void Component::setLabel(string label)
+{
+	this->m_Label = label;
+}
