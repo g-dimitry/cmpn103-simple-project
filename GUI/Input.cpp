@@ -1,5 +1,6 @@
 //#include "./Input.h"
 #include "./Output.h"
+#include "../Components/Gate.h"
 
 Input::Input(window *pW)
 {
@@ -95,7 +96,7 @@ ActionType Input::GetUserAction() const
 			case ITEM_TRUTHTABLE:
 				return ADD_XOR_GATE_2;
 			case ITEM_SAVE:
-				return ADD_XOR_GATE_2;
+				return SAVE;
 			case ITEM_LOAD:
 				return ADD_XOR_GATE_2;
 			case ITEM_EXIT:

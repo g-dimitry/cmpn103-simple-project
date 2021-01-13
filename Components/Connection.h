@@ -33,6 +33,7 @@ public:
 	virtual void setPointsVector(vector<AStar::Pair> v);
 	virtual InputPin *getInputPin(int n);
 	virtual OutputPin *getOutputPin();
+	virtual void Save(ofstream &file, int srcCompId);
 
 	bool Collides(Component* comp);
 	bool Collides(GraphicsInfo gInfo);

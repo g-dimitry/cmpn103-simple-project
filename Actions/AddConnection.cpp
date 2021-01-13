@@ -190,6 +190,7 @@ void AddConnection::Execute()
         this->pManager->GetOutput()->PrintMsg("Input pin has a connection already");
         return;
     }
+    auto tmp = DestComponent->getInputPin(pinNumber);
     Connection *conn = new Connection(gInfo, SrcComp->getOutputPin(), DestComponent->getInputPin(pinNumber));
     SrcComp->getOutputPin()->ConnectTo(conn);
     this->pManager->AddComponent(conn);

@@ -1,7 +1,13 @@
 #pragma once
+class Connection;
+class Gate;
+class InputPin;
+class OutputPin;
 #include "./Component.h"
-#include "./InputPin.h"
-#include "./OutputPin.h"
+#include "./Connection.h"
+//#include "./InputPin.h"
+//#include "./OutputPin.h"
+
 
 class SWITCH : public Component
 {
@@ -21,4 +27,5 @@ public:
 
 	virtual InputPin *getInputPin(int n);
 	virtual OutputPin *getOutputPin();
+	virtual void SWITCH::Save(ofstream &file);
 };

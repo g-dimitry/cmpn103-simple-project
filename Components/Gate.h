@@ -6,9 +6,11 @@
   - Each gate has n inputs pins and one output pin
 */
 
+#include <fstream>
 #include "./InputPin.h"
 #include "./OutputPin.h"
 #include "./Component.h"
+class Connection;
 
 class Gate : public Component
 {
@@ -22,5 +24,7 @@ public:
   int getInputsCount();
   virtual InputPin* getInputPin(int n);
 	virtual OutputPin* getOutputPin();
+  virtual Gate* Load(ActionType actionType, int x1, int x2);
+  virtual void Save(ofstream& file);
+  static Gate* isGate(Component* comp);
 };
-

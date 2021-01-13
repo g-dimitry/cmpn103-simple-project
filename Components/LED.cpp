@@ -7,6 +7,7 @@ LED::LED(const GraphicsInfo &r_GfxInfo) : Component(r_GfxInfo)
 	m_GfxInfo.x2 = r_GfxInfo.x2;
 	m_GfxInfo.y2 = r_GfxInfo.y2;
 	this->setLabel("LED");
+	this->inputPin.setComponent(this); 
 }
 
 void LED::Operate()
@@ -53,4 +54,18 @@ InputPin *LED::getInputPin(int n)
 OutputPin *LED::getOutputPin()
 {
 	return NULL;
+}
+
+void LED::Save(ofstream &file)
+{
+	file << ActionType::ADD_LED
+		 << "\t"
+		 << this->getComponentId()
+		 << "\t"
+		 << this->getLabel()
+		 << "\t"
+		 << this->getGraphicsInfo().x1
+		 << "\t"
+		 << this->getGraphicsInfo().y1
+		 << endl;
 }

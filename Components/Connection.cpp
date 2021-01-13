@@ -110,3 +110,26 @@ bool Connection::Collides(GraphicsInfo gInfo)
 	}
 	return doesCollide;
 }
+
+void Connection::Save(ofstream &file, int srcCompId) {
+	file << ActionType::ADD_CONNECTION
+		<< "\t"
+		<< this->getComponentId()
+		<< "\t"
+		<< this->getLabel()
+		<< "\t"
+		<< this->getGraphicsInfo().x1
+		<< "\t"
+		<< this->getGraphicsInfo().y1
+		<< "\t"
+		<< this->getGraphicsInfo().x2
+		<< "\t"
+		<< this->getGraphicsInfo().y2
+		<< "\t"
+		<< srcCompId
+		<< "\t"
+		<< this->DstPin->getComponent()->getComponentId()
+		<< "\t"
+		<< this->DstPin->getPinCount()
+		<< endl;
+}

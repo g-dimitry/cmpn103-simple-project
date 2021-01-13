@@ -11,6 +11,9 @@
 #include "./XNOR2.h"
 #include "./XOR2.h"
 #include "./XOR3.h"
+#include "../Defs.H";
+#include "./Connection.h"
+
 //Gate Constructor
 //Parameters:
 //r_Inputs: no. of gate's input pins
@@ -80,4 +83,80 @@ InputPin *Gate::getInputPin(int n)
 OutputPin *Gate::getOutputPin()
 {
 	return &(this->m_OutputPin);
+}
+
+Gate *Gate::Load(ActionType actionType, int x1, int y1)
+{
+	GraphicsInfo gInfo;
+	gInfo.x1 = x1;
+	gInfo.y1 = y1;
+	gInfo.x2 = x1 + UI.Gate_Width;
+	gInfo.y2 = y1 + UI.Gate_Height;
+	return gateFactory(actionType, gInfo);
+}
+
+void Gate::Save(ofstream &file)
+{
+	ActionType actionType;
+	if (dynamic_cast<BUFFER *>(this))
+	{
+		actionType = ADD_Buff;
+	}
+	else if (dynamic_cast<NOT *>(this))
+	{
+		actionType = ADD_INV;
+	}
+	else if (dynamic_cast<AND2 *>(this))
+	{
+		actionType = ADD_AND_GATE_2;
+	}
+	else if (dynamic_cast<OR2 *>(this))
+	{
+		actionType = ADD_OR_GATE_2;
+	}
+	else if (dynamic_cast<NAND2 *>(this))
+	{
+		actionType = ADD_NAND_GATE_2;
+	}
+	else if (dynamic_cast<NOR2 *>(this))
+	{
+		actionType = ADD_NOR_GATE_2;
+	}
+	else if (dynamic_cast<XOR2 *>(this))
+	{
+		actionType = ADD_XOR_GATE_2;
+	}
+	else if (dynamic_cast<XNOR2 *>(this))
+	{
+		actionType = ADD_XNOR_GATE_2;
+	}
+	else if (dynamic_cast<AND3 *>(this))
+	{
+		actionType = ADD_AND_GATE_3;
+	}
+	else if (dynamic_cast<OR3 *>(this))
+	{
+		actionType = ADD_OR_GATE_3;
+	}
+	else if (dynamic_cast<XOR3 *>(this))
+	{
+		actionType = ADD_XOR_GATE_3;
+	}
+	file << actionType
+		 << "\t"
+		 << this->getComponentId()
+		 << "\t"
+		 << this->getLabel()
+		 << "\t"
+		 << this->getGraphicsInfo().x1
+		 << "\t"
+		 << this->getGraphicsInfo().y1
+		 << endl;
+	this->m_OutputPin.getConnections()->forEach([&](Connection *conn) {
+		conn->Save(file, this->getComponentId());
+	});
+}
+
+Gate* Gate::isGate(Component* comp) {
+	return dynamic_cast<Gate*>(comp);
 }

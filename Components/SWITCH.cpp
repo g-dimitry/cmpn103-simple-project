@@ -53,3 +53,21 @@ OutputPin *SWITCH::getOutputPin()
 {
 	return &(this->outPin);
 }
+
+
+void SWITCH::Save(ofstream &file)
+{
+	file << ActionType::ADD_Switch
+		 << "\t"
+		 << this->getComponentId()
+		 << "\t"
+		 << this->getLabel()
+		 << "\t"
+		 << this->getGraphicsInfo().x1
+		 << "\t"
+		 << this->getGraphicsInfo().y1
+		 << endl;
+	this->getOutputPin()->getConnections()->forEach([&](Connection *conn) {
+		conn->Save(file, this->getComponentId());
+	});
+}

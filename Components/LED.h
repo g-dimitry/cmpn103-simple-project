@@ -19,4 +19,5 @@ public:
 	virtual LED* clone();
 	virtual InputPin* getInputPin(int n);
 	virtual OutputPin* getOutputPin();
+	virtual void Save(ofstream &file);
 };

@@ -104,3 +104,6 @@ void Component::setLabel(string label)
 {
 	this->m_Label = label;
 }
+
+void Component::Save(ofstream &file) {}
+void Component::Save(ofstream &file, int id) {}

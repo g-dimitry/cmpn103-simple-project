@@ -1,6 +1,7 @@
 #ifndef _COMPONENT_H
 #define _COMPONENT_H
 
+#include <fstream>
 #include "../Defs.h"
 #include "../GUI/Output.h"
 #include "./InputPin.h"
@@ -53,6 +54,8 @@ public:
 	static bool isPointInsideRect(int x, int y, int x1, int y1, int x2, int y2);
 	string getLabel();
 	virtual void setLabel(string label);
+	virtual void Save(ofstream& file);
+	virtual void Save(ofstream& file, int id);
 };
 
 #endif
