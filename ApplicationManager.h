@@ -65,7 +65,7 @@ public:
 	//Adds a new component to the list of components
 	void AddComponent(Component *pComp);
 	void RemoveComponent(int ID);
-	void RemoveComponents(Array<int> arr);
+	void RemoveComponents(Array<int>* arr);
 	void PushToClipboard(Component* comp);
 
 	bool GetComponentByID(int ID, Component** out);

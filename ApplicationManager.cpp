@@ -57,9 +57,9 @@ void ApplicationManager::RemoveComponent(int ID)
 	}
 }
 ////////////////////////////////////////////////////////////////////
-void ApplicationManager::RemoveComponents(Array<int> arr)
+void ApplicationManager::RemoveComponents(Array<int>* arr)
 {
-	arr.forEach([=](int ID) {
+	arr->forEach([=](int ID) {
 		this->RemoveComponent(ID);
 	});
 }

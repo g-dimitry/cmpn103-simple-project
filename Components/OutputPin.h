@@ -21,6 +21,7 @@ public:
 	OutputPin(int r_FanOut);
 	bool ConnectTo(Connection *r_Conn); //connect to a new connection
 	Array<Connection*>* getConnections();
+	void RemoveConnection(Connection* conn);
 };
 
 #endif

@@ -20,6 +20,12 @@ bool OutputPin::ConnectTo(Connection *r_Conn)
 	return false; //can't connect to any more connections
 }
 
+void OutputPin::RemoveConnection(Connection* conn) {
+	this->connections.filter([&](Connection* connection) {
+		return connection->getComponentId() != conn->getComponentId();
+	});
+}
+
 Array<Connection*>* OutputPin::getConnections() {
 	return &(this->connections);
 }
