@@ -68,7 +68,8 @@ bool ApplicationManager::ComponentCollides(Component *comp, Component **collided
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
-		if (!includeConnections && dynamic_cast<Connection*>(comp2)) {
+		if (!includeConnections && dynamic_cast<Connection *>(comp2))
+		{
 			return false;
 		}
 		return comp->Collides(comp2);
@@ -88,7 +89,8 @@ bool ApplicationManager::ComponentCollides(GraphicsInfo gInfo, Component **colli
 {
 	Array<Component *> arr = this->CompList.clone();
 	arr.filter([=](Component *comp2) {
-		if (!includeConnections && dynamic_cast<Connection*>(comp2)) {
+		if (!includeConnections && dynamic_cast<Connection *>(comp2))
+		{
 			return false;
 		}
 		bool collides = comp2->Collides(gInfo);
@@ -168,7 +170,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case Change_Switch:
 		pAct = new changeSwitch(this);
 		break;
-	case DELETE:
+	case ActionType::DEL:
 		pAct = new Delete(this);
 		break;
 	case DSN_TOOL:
@@ -275,7 +277,7 @@ void ApplicationManager::copySelectedComponents()
 {
 	this->Clipboard.filter([=](Component *comp) { return false; });
 	this->CompList.forEach([=](Component *comp) {
-		if (!dynamic_cast<Connection*>(comp) && comp->getSelected())
+		if (!dynamic_cast<Connection *>(comp) && comp->getSelected())
 		{
 			this->PushToClipboard(comp->clone());
 		}
@@ -289,7 +291,7 @@ void ApplicationManager::cutSelectedComponents()
 	Array<int> IDSArray;
 	this->Clipboard.filter([=](Component *comp) { return false; });
 	this->CompList.forEach([&](Component *comp) {
-		if (!dynamic_cast<Connection*>(comp) && comp->getSelected())
+		if (!dynamic_cast<Connection *>(comp) && comp->getSelected())
 		{
 			this->PushToClipboard(comp->clone());
 			IDSArray.push(comp->getComponentId());
@@ -467,4 +469,9 @@ void ApplicationManager::generateGrid(int grid[][82])
 			}
 		}
 	});
+}
+//////////////////////////////////////////////////////////////////////
+Array<Component *> *ApplicationManager::getCompList()
+{
+	return &(this->CompList);
 }

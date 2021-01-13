@@ -20,6 +20,14 @@ void Delete::ReadActionParameters()
 
 void Delete::Execute()
 {
+    ApplicationManager* pApp = this->pManager;
+    Array<Component*> arr = this->pManager->getCompList()->clone();
+    arr.filter([=](Component* comp) {
+        return comp->getSelected();
+    });
+    arr.forEach([&](Component* comp) {
+        pApp->RemoveComponent(comp->getComponentId());
+    });
 }
 
 

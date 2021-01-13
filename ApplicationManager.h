@@ -48,6 +48,7 @@ private:
 public:
 public:
 	ApplicationManager(); //constructor
+	Array<Component*>* getCompList();
 
 	//Reads the required action from the user and returns the corresponding action type
 	ActionType GetUserAction();

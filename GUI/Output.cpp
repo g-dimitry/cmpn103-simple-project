@@ -353,7 +353,7 @@ void Output::DrawWIRE(GraphicsInfo r_GfxInfo, bool selected) const
 void Output::DrawConnection(GraphicsInfo gInfo, vector<AStar::Pair> pointsVector, bool selected) const
 {
 	color col;
-	if (selected) {
+	if (!selected) {
 		col = BLACK;
 	} else {
 		col = BLUE;
