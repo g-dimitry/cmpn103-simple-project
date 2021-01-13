@@ -57,7 +57,7 @@ void ApplicationManager::RemoveComponent(int ID)
 	}
 }
 ////////////////////////////////////////////////////////////////////
-void ApplicationManager::RemoveComponents(Array<int>* arr)
+void ApplicationManager::RemoveComponents(Array<int> *arr)
 {
 	arr->forEach([=](int ID) {
 		this->RemoveComponent(ID);
@@ -289,18 +289,74 @@ void ApplicationManager::copySelectedComponents()
 
 void ApplicationManager::cutSelectedComponents()
 {
-	Array<int> IDSArray;
 	this->Clipboard.filter([=](Component *comp) { return false; });
 	this->CompList.forEach([&](Component *comp) {
 		if (!dynamic_cast<Connection *>(comp) && comp->getSelected())
 		{
 			this->PushToClipboard(comp->clone());
-			IDSArray.push(comp->getComponentId());
+			if (Gate *gate = dynamic_cast<Gate *>(comp))
+			{
+				auto conns = gate->getOutputPin()->getConnections()->clone();
+				int pinCount = gate->getInputsCount();
+				for (int i = 0; i < pinCount; i++)
+				{
+					auto arr = this->getCompList()->clone();
+					arr.forEach([&](Component *component) {
+						if (Connection *conn = dynamic_cast<Connection *>(component))
+						{
+							if (conn->getDestPin() == gate->getInputPin(i))
+							{
+								conns.push(conn);
+								conn->getSourcePin()->RemoveConnection(conn);
+							}
+						}
+					});
+				}
+				auto ids = conns.map<int>([&](Connection *conn) {
+					return conn->getComponentId();
+				});
+				this->RemoveComponents(ids);
+			}
+			else if (SWITCH *sw = dynamic_cast<SWITCH *>(comp))
+			{
+				auto conns = sw->getOutputPin()->getConnections()->clone();
+				auto ids = conns.map<int>([&](Connection *conn) {
+					return conn->getComponentId();
+				});
+				this->RemoveComponents(ids);
+			}
+			else if (LED *led = dynamic_cast<LED *>(comp))
+			{
+				Array<Connection *> conns;
+				auto arr = this->getCompList()->clone();
+				arr.forEach([&](Component *component) {
+					if (Connection *conn = dynamic_cast<Connection *>(component))
+					{
+						if (conn->getDestPin() == led->getInputPin(0))
+						{
+							conns.push(conn);
+							conn->getSourcePin()->RemoveConnection(conn);
+						}
+					}
+				});
+				auto ids = conns.map<int>([&](Connection *conn) {
+					return conn->getComponentId();
+				});
+				this->RemoveComponents(ids);
+			}
+			this->RemoveComponent(comp->getComponentId());
 		}
 	});
-	IDSArray.forEach([=](int ID) {
-		this->RemoveComponent(ID);
-	});
+	// this->CompList.forEach([&](Component *comp) {
+	// 	if (!dynamic_cast<Connection *>(comp) && comp->getSelected())
+	// 	{
+	// 		this->PushToClipboard(comp->clone());
+	// 		IDSArray.push(comp->getComponentId());
+	// 	}
+	// });
+	// IDSArray.forEach([=](int ID) {
+	// 	this->RemoveComponent(ID);
+	// });
 }
 
 ////////////////////////////////////////////////////////////////////
