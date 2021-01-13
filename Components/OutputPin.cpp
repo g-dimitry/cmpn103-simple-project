@@ -29,3 +29,10 @@ void OutputPin::RemoveConnection(Connection* conn) {
 Array<Connection*>* OutputPin::getConnections() {
 	return &(this->connections);
 }
+
+void OutputPin::setStatus(STATUS status) {
+	this->m_Status = status;
+	this->connections.forEach([&](Connection* conn) {
+		conn->getDestPin()->setStatus(status);
+	});
+}

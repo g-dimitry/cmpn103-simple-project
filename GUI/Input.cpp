@@ -93,16 +93,12 @@ ActionType Input::GetUserAction() const
 				return ActionType::SIM_MODE;
 			case ITEM_PAUSE:
 				return ActionType::DSN_MODE;
-			case ITEM_TRUTHTABLE:
-				return ADD_XOR_GATE_2;
 			case ITEM_SAVE:
-				return SAVE;
+				return ActionType::SAVE;
 			case ITEM_LOAD:
-				return ADD_XOR_GATE_2;
+				return ActionType::LOAD;
 			case ITEM_EXIT:
-				return ADD_XOR_GATE_2;
-			case TOOL_BAR_ITEM_COUNT:
-				return ADD_XOR_GATE_2;
+				return ActionType::EXIT;
 			}
 		}
 		//[1] If user clicks on the Toolbar
@@ -159,7 +155,7 @@ ActionType Input::GetUserAction() const
 	}
 	else //Application is in Simulation mode
 	{
-		return SIM_MODE; //This should be changed after creating the compelete simulation bar
+		return Change_Switch;
 	}
 }
 

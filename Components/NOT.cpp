@@ -11,9 +11,12 @@ NOT::NOT(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(1, r_FanOut)
 
 void NOT::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
+	STATUS status = STATUS::LOW;
+	if ((this->m_InputPins[0].getStatus() != STATUS::HIGH))
+	{
+		status = STATUS::HIGH;
+	}
+	this->m_OutputPin.setStatus(status);
 }
 
 // Function Draw

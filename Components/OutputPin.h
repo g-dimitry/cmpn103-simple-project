@@ -22,6 +22,7 @@ public:
 	bool ConnectTo(Connection *r_Conn); //connect to a new connection
 	Array<Connection*>* getConnections();
 	void RemoveConnection(Connection* conn);
+	virtual void setStatus(STATUS status);
 };
 
 #endif

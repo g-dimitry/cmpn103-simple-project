@@ -8,11 +8,11 @@ class OutputPin;
 //#include "./InputPin.h"
 //#include "./OutputPin.h"
 
-
 class SWITCH : public Component
 {
 private:
 	OutputPin outPin;
+	STATUS status = STATUS::LOW;
 
 public:
 	SWITCH(const GraphicsInfo &r_GfxInfo);
@@ -28,4 +28,5 @@ public:
 	virtual InputPin *getInputPin(int n);
 	virtual OutputPin *getOutputPin();
 	virtual void SWITCH::Save(ofstream &file);
+	void toggleSwitch();
 };

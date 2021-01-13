@@ -1,6 +1,6 @@
 #include "./SWITCH.h"
 
-SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo): outPin(5) , Component(r_GfxInfo)
+SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo) : outPin(5), Component(r_GfxInfo)
 {
 	m_GfxInfo.x1 = r_GfxInfo.x1;
 	m_GfxInfo.y1 = r_GfxInfo.y1;
@@ -11,9 +11,7 @@ SWITCH::SWITCH(const GraphicsInfo &r_GfxInfo): outPin(5) , Component(r_GfxInfo)
 
 void SWITCH::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
+	this->outPin.setStatus(this->status);
 }
 
 // Function Draw
@@ -21,7 +19,7 @@ void SWITCH::Operate()
 void SWITCH::Draw(Output *pOut)
 {
 	//Call output class and pass gate drawing info to it.
-	pOut->DrawSWITCH(m_GfxInfo, this->getSelected());
+	pOut->DrawSWITCH(m_GfxInfo, this->getSelected(), this->status == STATUS::HIGH);
 }
 
 //returns status of outputpin
@@ -41,7 +39,8 @@ void SWITCH::setInputPinStatus(int n, STATUS s)
 {
 }
 
-SWITCH* SWITCH::clone() {
+SWITCH *SWITCH::clone()
+{
 	return new SWITCH(this->m_GfxInfo);
 }
 
@@ -53,7 +52,6 @@ OutputPin *SWITCH::getOutputPin()
 {
 	return &(this->outPin);
 }
-
 
 void SWITCH::Save(ofstream &file)
 {
@@ -70,4 +68,14 @@ void SWITCH::Save(ofstream &file)
 	this->getOutputPin()->getConnections()->forEach([&](Connection *conn) {
 		conn->Save(file, this->getComponentId());
 	});
+}
+
+void SWITCH::toggleSwitch()
+{
+	if (this->status == STATUS::LOW) {
+		this->status = STATUS::HIGH;
+	} else {
+		this->status = STATUS::LOW;
+	}
+	this->Operate();
 }

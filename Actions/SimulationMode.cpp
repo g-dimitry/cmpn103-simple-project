@@ -20,6 +20,7 @@ void SimulationMode::ReadActionParameters()
 
 void SimulationMode::Execute()
 {
+    UI.AppMode = MODE::SIMULATION;
 }
 
 

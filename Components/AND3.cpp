@@ -11,9 +11,11 @@ AND3::AND3(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(3, r_FanOut)
 
 void AND3::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
+	STATUS status = STATUS::LOW;
+	if (this->m_InputPins[0].getStatus() == STATUS::HIGH && this->m_InputPins[1].getStatus() == STATUS::HIGH && this->m_InputPins[2].getStatus() == STATUS::HIGH) {
+		status = STATUS::HIGH;
+	}
+	this->m_OutputPin.setStatus(status);
 }
 
 // Function Draw

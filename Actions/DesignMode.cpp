@@ -20,6 +20,7 @@ void DesignMode::ReadActionParameters()
 
 void DesignMode::Execute()
 {
+    UI.AppMode = MODE::DESIGN;
 }
 
 

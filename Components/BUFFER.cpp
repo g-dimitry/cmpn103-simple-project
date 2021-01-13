@@ -11,9 +11,12 @@ BUFFER::BUFFER(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(1, r_FanOut)
 
 void BUFFER::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
+	STATUS status = STATUS::LOW;
+	if (this->m_InputPins[0].getStatus() == STATUS::HIGH)
+	{
+		status = STATUS::HIGH;
+	}
+	this->m_OutputPin.setStatus(status);
 }
 
 // Function Draw
@@ -42,6 +45,7 @@ void BUFFER::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n - 1].setStatus(s);
 }
 
-BUFFER* BUFFER::clone() {
+BUFFER *BUFFER::clone()
+{
 	return new BUFFER(this->m_GfxInfo, 5);
 }

@@ -316,29 +316,57 @@ void Output::DrawBUFFER(GraphicsInfo r_GfxInfo, bool selected) const
 	}
 	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
-void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawSWITCH(GraphicsInfo r_GfxInfo, bool selected, bool on) const
 {
 	string GateImage;
-	if (selected)
+	if (UI.AppMode == MODE::DESIGN)
 	{
-		GateImage = "Images\\components\\highlighted\\SWITCH.jpg";
+		if (selected)
+		{
+			GateImage = "Images\\components\\highlighted\\SWITCH.jpg";
+		}
+		else
+		{
+			GateImage = "Images\\components\\active\\SWITCH.jpg";
+		}
 	}
 	else
 	{
-		GateImage = "Images\\components\\active\\SWITCH.jpg";
+		if (on)
+		{
+			GateImage = "Images\\components\\on\\SWITCH.jpg";
+		}
+		else
+		{
+			GateImage = "Images\\components\\active\\SWITCH.jpg";
+		}
 	}
 	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
-void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected) const
+void Output::DrawLED(GraphicsInfo r_GfxInfo, bool selected, bool on) const
 {
 	string GateImage;
-	if (selected)
+	if (UI.AppMode == MODE::DESIGN)
 	{
-		GateImage = "Images\\components\\highlighted\\LED.jpg";
+		if (selected)
+		{
+			GateImage = "Images\\components\\highlighted\\LED.jpg";
+		}
+		else
+		{
+			GateImage = "Images\\components\\active\\LED.jpg";
+		}
 	}
 	else
 	{
-		GateImage = "Images\\components\\active\\LED.jpg";
+		if (on)
+		{
+			GateImage = "Images\\components\\on\\LED.jpg";
+		}
+		else
+		{
+			GateImage = "Images\\components\\active\\LED.jpg";
+		}
 	}
 	pWind->DrawImage(new image(GateImage, imagetype::JPEG), r_GfxInfo.x1, r_GfxInfo.y1, UI.Gate_Width, UI.Gate_Height);
 }
@@ -350,12 +378,37 @@ void Output::DrawWIRE(GraphicsInfo r_GfxInfo, bool selected) const
 
 //TODO: Add similar functions to draw all components
 
-void Output::DrawConnection(GraphicsInfo gInfo, vector<AStar::Pair> pointsVector, bool selected) const
+void Output::DrawConnection(GraphicsInfo gInfo, vector<AStar::Pair> pointsVector, bool selected, bool on) const
 {
 	color col;
-	if (!selected) {
+	if (UI.AppMode == MODE::DESIGN)
+	{
+		if (selected)
+		{
+			col = BLUE;
+		}
+		else
+		{
+			col = BLACK;
+		}
+	}
+	else
+	{
+		if (on)
+		{
+			col = GREEN;
+		}
+		else
+		{
+			col = BLACK;
+		}
+	}
+	if (!selected)
+	{
 		col = BLACK;
-	} else {
+	}
+	else
+	{
 		col = BLUE;
 	}
 	pWind->SetBrush(col);

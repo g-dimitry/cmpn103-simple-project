@@ -40,7 +40,7 @@ void Connection::setPointsVector(vector<AStar::Pair> v)
 
 void Connection::Draw(Output *pOut)
 {
-	pOut->DrawConnection(m_GfxInfo, this->pointsVector, this->getSelected());
+	pOut->DrawConnection(m_GfxInfo, this->pointsVector, this->getSelected(), this->getDestPin()->getStatus() == STATUS::HIGH);
 }
 
 int Connection::GetOutPinStatus() //returns status of outputpin if LED, return -1

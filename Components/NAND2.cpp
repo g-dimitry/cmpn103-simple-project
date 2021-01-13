@@ -11,9 +11,12 @@ NAND2::NAND2(const GraphicsInfo &r_GfxInfo, int r_FanOut) : Gate(2, r_FanOut)
 
 void NAND2::Operate()
 {
-	//caclulate the output status as the ANDing of the two input pins
-
-	//Add you code here
+	STATUS status = STATUS::LOW;
+	if (!(this->m_InputPins[0].getStatus() == STATUS::HIGH && this->m_InputPins[1].getStatus() == STATUS::HIGH))
+	{
+		status = STATUS::HIGH;
+	}
+	this->m_OutputPin.setStatus(status);
 }
 
 // Function Draw
@@ -42,6 +45,7 @@ void NAND2::setInputPinStatus(int n, STATUS s)
 	m_InputPins[n - 1].setStatus(s);
 }
 
-NAND2* NAND2::clone() {
+NAND2 *NAND2::clone()
+{
 	return new NAND2(this->m_GfxInfo, 5);
 }
